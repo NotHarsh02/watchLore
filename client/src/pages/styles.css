@@ -1,0 +1,131 @@
+body,html{
+    color:aliceblue;
+}
+
+.searchResult img{
+    height:100%;
+    width: auto;
+}
+.searchResult{
+    display: flex;
+    height: 20%;
+    margin-top: 3%;
+    margin-left: 10%;
+    overflow: hidden;
+    
+}
+.desc{
+    margin-left: 2%;
+    margin-right: 20%;
+}
+.customh4{
+    margin-left: 1%;
+    font-size: medium;
+    margin-top: 0.8%;
+}
+.customh5{
+    border-bottom: 1px solid #456;
+    padding-bottom: 5px;
+    margin-left: 10%;
+    text-align: center;
+}
+/* .laterMovies img{
+    height: 95%;
+    width:10%
+}
+.laterMovies{
+   
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    flex-direction: row;
+    
+    flex-wrap: wrap;
+} */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 0.9rem;
+    
+    margin-left:20%;
+    margin-right: 30%;
+    
+    
+  }
+  
+  .grid-item {
+    display: flex;
+    
+    align-items: center;
+    height: 10rem;
+    width: 7rem;
+    /* background-color: #f5f5f5; */
+  }
+  
+  .grid-item img {
+    height: 100%;
+    width:100%;
+    object-fit: cover;
+  }
+  .custombutton{
+    display: none;
+    
+  }
+ 
+.grid-item:hover img{
+    border:2px solid aliceblue;
+    filter: blur(0.7px);
+}
+.grid-item:hover button{
+    display: flex;
+    
+    text-align: center;
+    transform: translate(-170%, 140%);
+
+}
+.nomovies{
+    font-family: 'Macondo', cursive;
+  font-family: 'Zen Kurenaido', sans-serif;
+  font-size:xx-large;
+  color: aliceblue;
+  
+}
+.imageboxdiary img {
+  
+    /* flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100% */
+    margin-right: 12px;
+    height: 10rem;
+    width: auto;
+    /* object-fit: cover; */
+    
+}
+.diarydata{
+    overflow: hidden;
+}
+.diarydata div{
+    margin-right: 10%;
+}
+.imageboxdiary{
+    display: flex;
+    margin-right: 10%;
+    height: 10rem;
+    width: 35rem;
+}
+.selected{
+    border-bottom: solid 1px white;
+}
+.categories span{
+    margin-right: 3%;
+    cursor: pointer;
+}
+.categories span:hover{
+    color:aqua;
+    transition: all 0.5s ease-out;
+}
+.categories{
+    margin-top: 2%;
+    margin-left: 43% !important;
+}
