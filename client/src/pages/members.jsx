@@ -10,7 +10,7 @@ export default function Member(){
    }
     const getInfo = async () => {
         try {
-          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}members/all`, {
+          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/members/all`, {
             method: "GET",
             crossDomain: true,
             credentials: 'include',
