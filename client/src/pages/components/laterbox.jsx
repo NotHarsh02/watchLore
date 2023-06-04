@@ -21,23 +21,31 @@ export default function Laterbox(props){
          navigate(link)
       }
     const deleteMovie=async()=>{
-        if(category==="watchlater"){
-            const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/${data.id}`,{
-                method: "DELETE",
-                crossDomain: true,
-                credentials: 'include',
-                headers: {
-                  "Content-Type": "application/json",
-                  "Accept": "application/json",
-                  "Access-Control-Allow-Origin": "*",   
+        try {
+            
+                const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/${data.id}`,{
+                    method: "DELETE",
+                    crossDomain: true,
+                    credentials: 'include',
+                    headers: {
+                      "Content-Type": "application/json",
+                      "Accept": "application/json",
+                      "Access-Control-Allow-Origin": "*",   
+                    }
+                })
+                if(response.statusText==="OK"){
+                    window.location.reload();
+                    // togglelist()
+                    console.log("ok")
                 }
-            })
-            if(response.statusText==="OK"){
-                window.location.reload();
-                // togglelist()
-                console.log("ok")
-            }
+                else{
+                    console.log(data.id)
+                }
+            
+        } catch (error) {
+            console.log(error.message)
         }
+     
        
       
     }

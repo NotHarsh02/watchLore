@@ -90,7 +90,7 @@ const getTrailer =async()=>{
 }
 const addToWatchLater =()=>{
   
-  fetch(`${process.env.REACT_APP_BACKEND_URL}/add`, {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/add`, {
     method: "POST",
     crossDomain: true,
     credentials: 'include',
@@ -277,7 +277,7 @@ const toggletrailer=()=>{
 }
 const deleteMovie=async()=>{
   
-      const response= await fetch(`${process.env.BACKEND_URL}/likes/${movieId}`,{
+      const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/likes/${movieId}`,{
           method: "DELETE",
           crossDomain: true,
           credentials: 'include',

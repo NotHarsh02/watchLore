@@ -207,7 +207,7 @@ text-align: center;
 .youtubePlayer{
   z-index:999;
   position: fixed;
-  transform: translate(40%, -145%)
+  transform: translate(40%, -165%)
 }
 .overlay {
   background: rgba(49,49,49,1);
