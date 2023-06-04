@@ -11,7 +11,7 @@ export default function Diary(props){
     const [loading,setLoading] =useState(true);
     const getContents =async()=>{
         try {
-            const response= await fetch("http://localhost:5000/diary/all",{
+            const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/diary/all`,{
                 method: "GET",
                 crossDomain: true,
                 credentials: 'include',

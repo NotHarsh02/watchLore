@@ -22,7 +22,7 @@ export default function Login(props) {
     e.preventDefault();
 
     
-    fetch("http://localhost:5000/login", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
       method: "POST",
       crossDomain: true,
       credentials: 'include',

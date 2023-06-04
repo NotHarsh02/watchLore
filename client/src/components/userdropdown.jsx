@@ -8,7 +8,7 @@ export default function Userdropdown(props) {
     const navigate = useNavigate();
     const logOut=async()=>{
         try {
-          await fetch(`http://localhost:5000/logout`, {
+          await fetch(`${process.env.REACT_APP_BACKEND_URL}/logout`, {
             method: "GET",
             crossDomain: true,
             credentials: 'include',

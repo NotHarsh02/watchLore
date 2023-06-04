@@ -59,7 +59,7 @@ export default function Profile(){
 }
   const favarray=async()=>{
     try {
-        const response= await fetch("http://localhost:5000/favourites/getdata",{
+        const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/favourites/getdata`,{
             method: "GET",
             crossDomain: true,
             credentials: 'include',
@@ -85,7 +85,7 @@ setfavs(data.favourites)
    const  addMovies =async()=>{
     console.log(getfavs)
     try {
-      const response = await fetch("http://localhost:5000/favourites/add", {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/favourites/add`, {
         method: "POST",
         crossDomain: true,
         credentials: 'include',
@@ -121,7 +121,7 @@ setfavs(data.favourites)
     
       const recarray=async()=>{
         try {
-            const response= await fetch("http://localhost:5000/likes/getdata",{
+            const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/likes/getdata`,{
                 method: "GET",
                 crossDomain: true,
                 credentials: 'include',

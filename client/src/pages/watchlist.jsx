@@ -12,7 +12,7 @@ export default function Watchlist(props){
     const [loading,isLoading] =useState(true)
     const watchlaterarray=async()=>{
         try {
-            const response= await fetch("http://localhost:5000/watchlater/getdata",{
+            const response= await fetch(`http://localhost:5000/watchlater/getdata`,{
                 method: "GET",
                 crossDomain: true,
                 credentials: 'include',

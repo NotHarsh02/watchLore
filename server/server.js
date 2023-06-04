@@ -51,7 +51,7 @@ const sessionConfig = {
       mongoUrl: 'mongodb+srv://Harsh:harsh2002@cluster0.essf6ex.mongodb.net/PlayAlong',
       collection: 'sessions'
     }),
-    cookie: { secure: false } ,
+    cookie: { secure: true } ,
     cookie: {domain: 'localhost:3000'},
     cookie: {
       // cookie: {domain: 'localhost:3000'},
@@ -79,7 +79,12 @@ app.get('/checkLogin',(req,res)=>{
   res.json({ loggedIn: req.isAuthenticated() });
 })
 app.get("/getinfo",(req,res)=>{
+  try {
     res.json(req.session.passport.user)
+  } catch (error) {
+    console.log(error.message)
+  }
+   
     // res.json(req.user)
    
 })

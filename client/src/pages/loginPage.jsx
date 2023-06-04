@@ -9,7 +9,7 @@ export default function Hello() {
   const[data,setData] =useState("");
   const [isDataLoaded, setDataLoaded] = useState(false);
   const userInfo =async()=>{
-    const response =await fetch("http://localhost:5000/getinfo", {
+    const response =await fetch(`${process.env.BACKEND_URL}/getinfo`, {
     method: "GET",
     credentials: "include",
     headers: {
@@ -28,7 +28,7 @@ export default function Hello() {
 
   const isLogIn = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/checkLogin?${Date.now()}`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/checkLogin?${Date.now()}`, {
         method: "GET",
         crossDomain: true,
         credentials: 'include',

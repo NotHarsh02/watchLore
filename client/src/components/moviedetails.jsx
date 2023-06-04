@@ -90,7 +90,7 @@ const getTrailer =async()=>{
 }
 const addToWatchLater =()=>{
   
-  fetch("http://localhost:5000/watchlater/add", {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/add`, {
     method: "POST",
     crossDomain: true,
     credentials: 'include',
@@ -120,7 +120,7 @@ const addToWatchLater =()=>{
 
 const addToLikes =()=>{
   
-  fetch("http://localhost:5000/likes/add", {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/likes/add`, {
     method: "POST",
     crossDomain: true,
     credentials: 'include',
@@ -148,7 +148,7 @@ const addToLikes =()=>{
     });
 }
 const checkWatchLater=()=>{
-  fetch("http://localhost:5000/watchlater/check", {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/check`, {
     method: "POST",
     crossDomain: true,
     credentials: 'include',
@@ -176,7 +176,7 @@ const checkWatchLater=()=>{
     });
 }
 const checkLikes=()=>{
-  fetch("http://localhost:5000/likes/check", {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/likes/check`, {
     method: "POST",
     crossDomain: true,
     credentials: 'include',
@@ -205,7 +205,7 @@ const checkLikes=()=>{
 }
 const addtodiary=()=>{
 
-  fetch("http://localhost:5000/diary/add", {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/diary/add`, {
     method: "POST",
     crossDomain: true,
     credentials: 'include',
@@ -235,7 +235,7 @@ const addtodiary=()=>{
 
 }
 const isDiary=()=>{
-  fetch("http://localhost:5000/diary/check", {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/diary/check`, {
     method: "POST",
     crossDomain: true,
     credentials: 'include',
@@ -277,7 +277,7 @@ const toggletrailer=()=>{
 }
 const deleteMovie=async()=>{
   
-      const response= await fetch(`http://localhost:5000/likes/${movieId}`,{
+      const response= await fetch(`${process.env.BACKEND_URL}/likes/${movieId}`,{
           method: "DELETE",
           crossDomain: true,
           credentials: 'include',

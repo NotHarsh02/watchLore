@@ -22,7 +22,7 @@ export default function Laterbox(props){
       }
     const deleteMovie=async()=>{
         if(category==="watchlater"){
-            const response= await fetch(`http://localhost:5000/watchlater/${data.id}`,{
+            const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/${data.id}`,{
                 method: "DELETE",
                 crossDomain: true,
                 credentials: 'include',

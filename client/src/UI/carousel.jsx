@@ -31,7 +31,7 @@ export default function Carousel(props){
 
 const recarray=async()=>{
   try {
-      const response= await fetch("http://localhost:5000/likes/getdata",{
+      const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/likes/getdata`,{
           method: "GET",
           crossDomain: true,
           credentials: 'include',

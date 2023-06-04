@@ -56,7 +56,7 @@ function Navplay(props) {
  }
  const isLogIn = async () => {
   try {
-    const response = await fetch(`http://localhost:5000/checkLogin?${Date.now()}`, {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/checkLogin?${Date.now()}`, {
       method: "GET",
       crossDomain: true,
       credentials: 'include',
@@ -81,7 +81,7 @@ function Navplay(props) {
 }
 
 const userInfo =async()=>{
-  const response =await fetch("http://localhost:5000/getinfo", {
+  const response =await fetch(`${process.env.REACT_APP_BACKEND_URL}/getinfo`, {
   method: "GET",
   credentials: "include",
   headers: {

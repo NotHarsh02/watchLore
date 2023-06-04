@@ -20,7 +20,7 @@ export default function Register(props) {
 
 
 
-    fetch("http://localhost:5000/register", {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/register`, {
       method: "POST",
       crossDomain: true,
       headers: {
