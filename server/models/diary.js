@@ -9,7 +9,7 @@ const DiarySchema=new Schema({
     movies:[
         {
             type: Number,
-            unique:true,
+            
             
         } 
     ],

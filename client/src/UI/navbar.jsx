@@ -91,10 +91,10 @@ const userInfo =async()=>{
 }
   })
   if (!response.ok) {
-    throw new Error("Network response was not ok");
+   console.log("cannot get info of user");
   }
   const temp = await response.json();
-  
+  console.log(temp)
   setData(temp);
   
 }

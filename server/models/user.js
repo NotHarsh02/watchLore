@@ -11,20 +11,24 @@ const UserSchema = new Schema({
     watchLater:[
         {
             type: Number,
-            unique:true,
-            
+            default: [],
+           
         }
     ],
     favourites:[
         {
             type: Number,
-            unique:true, 
+           
+            default: [],
+            
         }
     ],
     likes:[
         {
             type: Number,
-            unique:true, 
+           
+            default: [],
+            
         }
     ]
 
