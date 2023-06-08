@@ -52,7 +52,7 @@ const sessionConfig = {
       collection: 'sessions'
     }),
     cookie: { secure: true } ,
-    cookie: {domain: 'localhost:3000'},
+    // cookie: {domain: 'localhost:3000'},
     cookie: {
       // cookie: {domain: 'localhost:3000'},
         httpOnly: true,
