@@ -64,7 +64,7 @@ if (process.env.type === 'production') {
     }),
     
     cookie: { secure: true } ,
-    cookie: {domain: 'https://fancy-trifle-61ead3.netlify.app/'},
+    
     cookie: {
         
         httpOnly: true,
