@@ -19,7 +19,7 @@ app.use(express.json());
 if (process.env.type === 'production') {
   app.use(cors({
    
-    origin: 'https://6485de4eb6fff31eaa2efd92--fancy-trifle-61ead3.netlify.app', // replace with the domain of your React app
+    origin: 'https://fancy-trifle-61ead3.netlify.app/', // replace with the domain of your React app
     credentials: true
   }));
 } else {
