@@ -17,6 +17,7 @@ const cors = require("cors");
 app.use(flash())
 app.use(express.json());
 if (process.env.type === 'production') {
+  
   app.use(cors({
    
     origin: 'https://fancy-trifle-61ead3.netlify.app', // replace with the domain of your React app
@@ -65,11 +66,9 @@ if (process.env.type === 'production') {
     }),
     
     cookie: { secure: true } ,
+    cookie: { sameSite: "none"} ,
     
     cookie: {
-        
-        
-        sameSite: "none",
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
