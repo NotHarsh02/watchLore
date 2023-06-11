@@ -22,6 +22,7 @@ if (process.env.type === 'production') {
     origin: 'https://fancy-trifle-61ead3.netlify.app', // replace with the domain of your React app
     credentials: true
   }));
+  app.set("trust proxy",1);
 } else {
   app.use(cors({
     
@@ -67,7 +68,7 @@ if (process.env.type === 'production') {
     
     cookie: {
         
-        httpOnly: true,
+        
         sameSite: "none",
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7

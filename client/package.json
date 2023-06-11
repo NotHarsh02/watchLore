@@ -1,7 +1,8 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "proxy": "http://localhost:5000",
+  
+  "proxy": "https://mernappbackend2-vnq9.onrender.com",
   "private": true,
   "dependencies": {
     "@emotion/core": "^10.1.1",
