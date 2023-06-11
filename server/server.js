@@ -51,8 +51,10 @@ const sessionConfig = {
       mongoUrl: 'mongodb+srv://Harsh:harsh2002@cluster0.essf6ex.mongodb.net/PlayAlong',
       collection: 'sessions'
     }),
+    
     cookie: { secure: true } ,
-    cookie: {domain: 'localhost:3000'},
+    // cookie: {domain: 'localhost:3000'},
+    cookie: {domain: 'https://fancy-trifle-61ead3.netlify.app/'},
     cookie: {
         
         httpOnly: true,
