@@ -16,13 +16,22 @@ const members=require("./routes/members")
 const cors = require("cors");
 app.use(flash())
 app.use(express.json());
+if (process.env.type === 'production') {
+  app.use(cors({
+   
+    origin: 'https://6485de4eb6fff31eaa2efd92--fancy-trifle-61ead3.netlify.app', // replace with the domain of your React app
+    credentials: true
+  }));
+} else {
+  app.use(cors({
+    
+    origin: 'http://localhost:3000',
+    
+    credentials: true
+  }));
+}
 
-app.use(cors({
-  //change for local deploy
-  origin: 'http://localhost:3000',
-  // origin: 'https://6485de4eb6fff31eaa2efd92--fancy-trifle-61ead3.netlify.app', // replace with the domain of your React app
-  credentials: true
-}));
+
 
 
 
@@ -44,8 +53,8 @@ db.once("open", () => {
 });
 
 
-
-const sessionConfig = {
+if (process.env.type === 'production') {
+  const sessionConfig = {
     secret: 'thisshouldbeabettersecret!',
     resave: false,
     saveUninitialized: false,
@@ -55,19 +64,40 @@ const sessionConfig = {
     }),
     
     cookie: { secure: true } ,
-    //change for local deploy
-    cookie: {domain: 'localhost:3000'},
-    // cookie: {domain: 'https://fancy-trifle-61ead3.netlify.app/'},
+    cookie: {domain: 'https://fancy-trifle-61ead3.netlify.app/'},
     cookie: {
         
         httpOnly: true,
-        //change for local deploy
-        // sameSite: "none",
+        sameSite: "none",
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }
 app.use(session(sessionConfig))
+} else {
+  const sessionConfig = {
+    secret: 'thisshouldbeabettersecret!',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: 'mongodb+srv://Harsh:harsh2002@cluster0.essf6ex.mongodb.net/PlayAlong',
+      collection: 'sessions'
+    }),
+    
+    cookie: { secure: true } ,
+    cookie: {domain: 'localhost:3000'},
+    cookie: {
+        
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+app.use(session(sessionConfig))
+}
+
+
+
 
 app.use(passport.initialize());
 app.use(passport.session());
