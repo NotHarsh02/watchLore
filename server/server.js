@@ -19,7 +19,7 @@ app.use(express.json());
 
 app.use(cors({
   // origin: 'http://localhost:3000',
-  origin: 'https://fancy-trifle-61ead3.netlify.app/', // replace with the domain of your React app
+  origin: 'https://fancy-trifle-61ead3.netlify.app', // replace with the domain of your React app
   credentials: true
 }));
 
