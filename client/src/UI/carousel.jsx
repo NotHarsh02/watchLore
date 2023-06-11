@@ -1,13 +1,15 @@
 import React ,{useEffect,useState} from 'react';
 import "swiper/css";
-import "swiper/css/pagination";
-
-import { Pagination } from "swiper";
+import "swiper/css/navigation";
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import {  Autoplay,EffectCoverflow, Pagination, Navigation} from "swiper";
 import "../components/styles.css"
 import { Swiper, SwiperSlide } from "swiper/react";
 import Moviebox from '../components/movieBox';
 import { useSelector } from 'react-redux';
 export default function Carousel(props){
+  
   const [rated,setTopRated] =useState([]);
   
   const popular = useSelector(state => state.movies.movies);
@@ -73,9 +75,9 @@ else{
 const updatedfinal=Recarrayafterop(finalwala)
 
 
-if (finalwala.length>30){
+if (finalwala.length>20){
  
-setRec(updatedfinal.slice(0,31))
+setRec(updatedfinal.slice(0,20))
 }
 
 else{
@@ -113,17 +115,44 @@ if(allrec&& allrec.length!==0){
   <div className='carousel' id="recvala">
    
 <Swiper 
-slidesPerView={9}
-spaceBetween={5}
+effect={'coverflow'}
+grabCursor={true}
+centeredSlides={true}
+// slidesPerView={9}
+// spaceBetween={5}
+slidesPerView={3}
+autoplay={{ delay: 2500 }}
+coverflowEffect={{
+  rotate: 0,
+  stretch: 0,
+  depth: 165,
+  modifier: 1.5,
+}}
+pagination={{ el: '.swiper-pagination', clickable: true }}
+navigation={{
+  nextEl: '.swiper-button-next',
+  prevEl: '.swiper-button-prev',
+  clickable: true,
+}}
+modules={[Autoplay,EffectCoverflow, Pagination, Navigation]}
+className="swiper_container"
 
-modules={[Pagination]}
-className="mySwiper"
 >
 
 {
-rec.map(movie=><SwiperSlide ><Moviebox  title ={movie.title} img={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} id={movie.id}></Moviebox></SwiperSlide>)
+rec.map(movie=><SwiperSlide className='swiperslidecustom' ><Moviebox  title ={movie.title} img={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} id={movie.id}></Moviebox></SwiperSlide>)
 }
-
+<div className="slider-controler">
+          <div className="swiper-button-prev slider-arrow">
+            {/* <ion-icon name="arrow-back-outline"></ion-icon> */}
+            <h1>prev</h1>
+          </div>
+          <div className="swiper-button-next slider-arrow">
+            {/* <ion-icon name="arrow-forward-outline"></ion-icon> */}
+            <h1>next</h1>
+          </div>
+          
+        </div>
 </Swiper>
 </div>
 )
@@ -138,10 +167,12 @@ if(recommendations&&recommendations.length!==0){
 <Swiper 
         slidesPerView={6}
         spaceBetween={5}
+        grabCursor={true}
+    
         // pagination={{
         //   clickable: true,
         // }}
-        modules={[Pagination]}
+        modules={[Navigation]}
         className="mySwiper"
       >
 
@@ -166,7 +197,7 @@ if(!recommendations){
         // pagination={{
         //   clickable: true,
         // }}
-        modules={[Pagination]}
+        grabCursor={true}
         className="mySwiper"
       >
 

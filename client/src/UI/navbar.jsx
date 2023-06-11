@@ -42,6 +42,7 @@ function Navplay(props) {
     toggleSignUp()
   }
   const signout =()=>{
+   
    isLogIn()
   }
  const querySearch =async(e)=>{
@@ -90,12 +91,15 @@ const userInfo =async()=>{
   "Access-Control-Allow-Origin": "*"
 }
   })
-  if (!response.ok) {
+  const temp = await response.json();
+  if (temp==="no") {
    console.log("cannot get info of user");
   }
-  const temp = await response.json();
-  console.log(temp)
+  else{
+  
+  
   setData(temp);
+  }
   
 }
  useEffect(()=>{

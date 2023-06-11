@@ -42,12 +42,17 @@ const userInfo =async()=>{
   "Access-Control-Allow-Origin": "*"
 }
   })
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
+
   const temp = await response.json();
-  
+  // console.log(temp)
+
+  if (temp==="no") {
+    console.log("no user info present")
+  }
+  else{
+    console.log("present now")
   setData(temp);
+  }
 
  
  

@@ -52,11 +52,11 @@ const sessionConfig = {
       collection: 'sessions'
     }),
     cookie: { secure: true } ,
-    // cookie: {domain: 'localhost:3000'},
+    cookie: {domain: 'localhost:3000'},
     cookie: {
-      // cookie: {domain: 'localhost:3000'},
+        
         httpOnly: true,
-        sameSite: "none",
+        // sameSite: "none",
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -80,10 +80,15 @@ app.get('/checkLogin',(req,res)=>{
   res.json({ loggedIn: req.isAuthenticated() });
 })
 app.get("/getinfo",(req,res)=>{
-  try {
+  try {if(req.isAuthenticated()){
     res.json(req.session.passport.user)
+  }
+  else{
+    res.json("no")
+  }
   } catch (error) {
-    console.log(error.message)
+    console.log("no info of user")
+    
   }
    
     // res.json(req.user)
