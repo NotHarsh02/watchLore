@@ -18,8 +18,9 @@ app.use(flash())
 app.use(express.json());
 
 app.use(cors({
-  // origin: 'http://localhost:3000',
-  origin: 'https://6485de4eb6fff31eaa2efd92--fancy-trifle-61ead3.netlify.app', // replace with the domain of your React app
+  //change for local deploy
+  origin: 'http://localhost:3000',
+  // origin: 'https://6485de4eb6fff31eaa2efd92--fancy-trifle-61ead3.netlify.app', // replace with the domain of your React app
   credentials: true
 }));
 
@@ -54,12 +55,14 @@ const sessionConfig = {
     }),
     
     cookie: { secure: true } ,
-    // cookie: {domain: 'localhost:3000'},
-    cookie: {domain: 'https://fancy-trifle-61ead3.netlify.app/'},
+    //change for local deploy
+    cookie: {domain: 'localhost:3000'},
+    // cookie: {domain: 'https://fancy-trifle-61ead3.netlify.app/'},
     cookie: {
         
         httpOnly: true,
-        sameSite: "none",
+        //change for local deploy
+        // sameSite: "none",
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }

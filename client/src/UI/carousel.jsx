@@ -4,6 +4,7 @@ import "swiper/css/navigation";
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import {  Autoplay,EffectCoverflow, Pagination, Navigation} from "swiper";
+import { ArrowRightCircle ,ArrowLeftCircle} from 'react-bootstrap-icons';
 import "../components/styles.css"
 import { Swiper, SwiperSlide } from "swiper/react";
 import Moviebox from '../components/movieBox';
@@ -115,18 +116,19 @@ if(allrec&& allrec.length!==0){
   <div className='carousel' id="recvala">
    
 <Swiper 
+initialSlide={8}
 effect={'coverflow'}
 grabCursor={true}
 centeredSlides={true}
 // slidesPerView={9}
 // spaceBetween={5}
-slidesPerView={3}
-autoplay={{ delay: 2500 }}
+slidesPerView={8}
+autoplay={{ delay: 3000 }}
 coverflowEffect={{
   rotate: 0,
   stretch: 0,
-  depth: 165,
-  modifier: 1.5,
+  depth: 25,//distance betwn slides
+  modifier: 4,//focus 
 }}
 pagination={{ el: '.swiper-pagination', clickable: true }}
 navigation={{
@@ -145,11 +147,11 @@ rec.map(movie=><SwiperSlide className='swiperslidecustom' ><Moviebox  title ={mo
 <div className="slider-controler">
           <div className="swiper-button-prev slider-arrow">
             {/* <ion-icon name="arrow-back-outline"></ion-icon> */}
-            <h1>prev</h1>
+            <ArrowLeftCircle color='white' size={40}></ArrowLeftCircle>
           </div>
           <div className="swiper-button-next slider-arrow">
             {/* <ion-icon name="arrow-forward-outline"></ion-icon> */}
-            <h1>next</h1>
+            <ArrowRightCircle color='white' size={40}></ArrowRightCircle>
           </div>
           
         </div>
