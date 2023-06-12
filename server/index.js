@@ -17,7 +17,12 @@ const cors = require("cors");
 app.use(flash())
 app.use(express.json());
 if (process.env.type === 'production') {
-  
+  app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://watch-lore.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+  });
   app.use(cors({
    
     origin: 'https://watch-lore.vercel.app', // replace with the domain of your React app
