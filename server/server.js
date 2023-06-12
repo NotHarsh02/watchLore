@@ -74,7 +74,9 @@ if (process.env.type === 'production') {
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }
+
 app.use(session(sessionConfig))
+app.enable('trust proxy');
 } else {
   const sessionConfig = {
     secret: 'thisshouldbeabettersecret!',
