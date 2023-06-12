@@ -20,7 +20,7 @@ if (process.env.type === 'production') {
   
   app.use(cors({
    
-    origin: 'https://fancy-trifle-61ead3.netlify.app', // replace with the domain of your React app
+    origin: 'https://watch-lore.vercel.app/', // replace with the domain of your React app
     credentials: true
   }));
   app.set("trust proxy",1);
