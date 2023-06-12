@@ -44,6 +44,7 @@ function Navplay(props) {
   const signout =()=>{
    
    isLogIn()
+   window.location.reload();
   }
  const querySearch =async(e)=>{
   e.preventDefault();
