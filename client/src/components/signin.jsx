@@ -123,7 +123,7 @@ export default function Login(props) {
           </div>
           
           <p className="forgot-password text-right" style={{color:"black"}}>
-            Already have an account? 
+            Dont have an account? 
            <br />
             <a role="button" className="linkLike" onClick={relayRegister}>Sign Up</a>
           </p>
