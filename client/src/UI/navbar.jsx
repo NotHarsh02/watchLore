@@ -120,7 +120,7 @@ const userInfo =async()=>{
       <Navbar bg="" variant="dark">
       
       <Container >
-        <Navbar.Brand href="/">WatchAlong.TM</Navbar.Brand>
+        <Navbar.Brand href="/">WatchLore.TM</Navbar.Brand>
         <Nav className="me-auto">
           
           <Nav.Link href="/lists">Lists</Nav.Link>

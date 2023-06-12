@@ -52,15 +52,17 @@
     font-family: 'Macondo', cursive;
   font-family: 'Zen Kurenaido', sans-serif;
   font-size:xx-large;
-  color: black;
+  color: white;
+  font-weight: 1000;
   }
 
 #getStarted div{
-    margin-bottom: 10%;
-    backdrop-filter: blur(4px);
+    margin-top: 53%;
+    margin-bottom: 20%;
+    text-shadow : 3.5px 3.5px black;
 }
 #getStarted div button{
-   margin-left: 38%;
+   margin-left: 28%;
    margin-top: 3%;
 }
 #userNav{

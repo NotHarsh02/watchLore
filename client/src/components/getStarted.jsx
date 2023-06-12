@@ -10,9 +10,10 @@ export default function Letsgo(){
     return(<>
       <div id='getStarted'>
         <div>
-        <h1 >Whether you're a casual movie-goer or a film buff,</h1>  
-        <h1>We have something for everyone.</h1>
-        <h1>Sign up now and start your cinematic journey!</h1>
+          
+        <h1 >Track films you’ve watched.</h1>  
+        <h1>Save those you want to see.</h1>
+        <h1>Tell your friends what’s good.</h1>
           <button className="btn btn-primary " onClick={toggleSignUp} >Get started now!</button>
         </div>
        

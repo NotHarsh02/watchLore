@@ -76,11 +76,12 @@ img{
   margin-top: 5%;
 }
 .fullscreen{
-  height: 100%;
-  /* background-image: url("D:\Webdev\PlayAlong.TM\client\assets\getstarted1.jpg"); */
+  height: 75%;
+  background-image: url("https://sm.ign.com/t/ign_in/screenshot/default/fmneipnzjubn2fy0d4q9gnfyhsp_64g3.1280.jpg");
   background-size: cover;
   margin-left: 7%;
   margin-right: 13%;
+  margin-bottom: 12%;
   box-shadow: 0 0 10px 10px  rgb(38, 40, 43) inset
 }
 .poster {
