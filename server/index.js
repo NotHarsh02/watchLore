@@ -21,7 +21,8 @@ if (process.env.type === 'production') {
   app.use(cors({
    
     origin: 'https://watch-lore.vercel.app', // replace with the domain of your React app
-    credentials: true
+    credentials: true,
+    optionSuccessStatus: 200
   }));
   app.set("trust proxy",1);
 } else {
