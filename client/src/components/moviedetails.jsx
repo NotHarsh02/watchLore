@@ -24,7 +24,7 @@ export default function Details(props){
     const date=new Date();
     const day = date.toLocaleDateString('en-US', { weekday: 'long' }); 
     const dateOfMonth = date.getDate(); 
-   
+    const [copied,setCopy]=useState(false);
     const year = date.getFullYear(); 
     
     const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -352,7 +352,9 @@ useEffect(() => {
       {isLiked?<div onClick={deleteMovie} style={{marginLeft:"14%",clickable:"true"  }}><HeartFill color="red" size={40}></HeartFill><br />Liked</div>:
       <div  style={{marginLeft:"14%",cursor: "pointer"}}onClick={addToLikes} ><Heart size={40} color="red"></Heart>
       </div>}
-      <a style={{marginLeft:"10%",textDecoration:"none",fontSize:"large",marginTop:"1%"}}href={`https://tpb25.ukpass.co/search.php?q=${data.title}&cat=201`}target="_blank">Download now</a>
+      {copied?<button className='btn btn-info disabled' style={{width:"15%",marginLeft:"18%",marginTop:"10px"}}>Copied!</button>:
+      <button className='btn btn-info' onClick={()=>{navigator.clipboard.writeText(window.location.href); setCopy(true)}}style={{width:"15%",marginLeft:"18%",marginTop:"10px"}}>Copy</button>}
+      <a style={{marginLeft:"2%",textDecoration:"none",fontSize:"large",marginTop:"1%"}}href={`https://tpb25.ukpass.co/search.php?q=${data.title}&cat=201`}target="_blank">Download</a>
       </div>
       {watched?<span style={{marginLeft:"15%",marginTop:"5%",marginBottom:"5%"}}>{`Watched last on ${moviedate}`}</span>:<></>}
       <span style={{marginLeft:"5%",marginBottom:"5%"}}>Available on:</span>
