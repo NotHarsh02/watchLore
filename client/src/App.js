@@ -11,6 +11,8 @@ import Watchlist from './pages/watchlist';
 import Diary from './pages/diary';
 import Profile from './pages/profile';
 import Member from './pages/members';
+import MovieList from './pages/MovieList';
+import Newlist from './pages/components/newlist';
 const router =createBrowserRouter([
   {path:'/films/:movieId',element:<MovieDetails/>},
   {path:'/profile/:user',element:<Profile/>},
@@ -19,8 +21,10 @@ const router =createBrowserRouter([
   {path:'/:user/watchlater',element:<Watchlist/>},
   {path:'/:user/diary',element:<Diary/>},
   {path:'/members',element:<Member/>},
-  {path:'*',element:<Wrong/>},
-  {path:"/",element:<Home/>}
+  {path:"/lists",element:<MovieList/>},
+  {path:"/lists/new",element:<Newlist/>},
+  {path:"/",element:<Home/>},
+  {path:'*',element:<Wrong/>}
 
 
  

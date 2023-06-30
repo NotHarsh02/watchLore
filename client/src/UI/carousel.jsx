@@ -76,9 +76,9 @@ else{
 const updatedfinal=Recarrayafterop(finalwala)
 
 
-if (finalwala.length>20){
+if (finalwala.length>30){
  
-setRec(updatedfinal.slice(0,20))
+setRec(updatedfinal.slice(0,30))
 }
 
 else{
@@ -123,7 +123,7 @@ centeredSlides={true}
 // slidesPerView={9}
 // spaceBetween={5}
 slidesPerView={8}
-autoplay={{ delay: 3000 }}
+autoplay={{ delay: 2500 }}
 coverflowEffect={{
   rotate: 0,
   stretch: 0,
