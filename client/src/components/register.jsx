@@ -39,6 +39,57 @@ export default function Register(props) {
         
         if (data.status == "ok") {
           registertoggle()
+          const promptElement = document.createElement('div');
+        promptElement.textContent = 'Signed Up!';
+        promptElement.style.position = 'fixed';
+        promptElement.style.top = '60px';
+        promptElement.style.left = '10px';
+        promptElement.style.padding = '10px';
+        promptElement.style.borderRadius="2%"
+        promptElement.style.backgroundColor = 'green';
+        promptElement.style.color = 'white';
+        promptElement.style.zIndex = '9999';
+        promptElement.style.width="20%";
+        promptElement.style.textAlign="center";
+        
+        document.body.appendChild(promptElement);
+
+        setTimeout(() => {
+          promptElement.remove();
+        }, 2500);
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
+          method: "POST",
+          crossDomain: true,
+          credentials: 'include',
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Access-Control-Allow-Origin": "*",
+         
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            
+            if (data.status === "ok") {
+           
+            
+              window.location.reload();
+            
+              
+            
+            
+            
+            }
+            else{
+              console.log("error");
+            }
+            
+          });
         } else {
           alert("User already exists!");
         }
@@ -50,7 +101,7 @@ export default function Register(props) {
     <div className="auth-wrapper">
       <div className="auth-inner">
         <form onSubmit={handleSubmit} autoComplete="off">
-          <h3>Sign Up</h3>
+          <h2>Sign Up</h2>
 
           <div className="mb-3">
             <label>UserName:</label>

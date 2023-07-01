@@ -8,6 +8,7 @@ const session = require("express-session")
 const MongoStore = require('connect-mongo');
 const User = require("./models/user");
 const watchlater = require("./routes/watchlater");
+const list =require("./routes/list");
 const diary = require("./routes/diary");
 const favourites = require("./routes/favourites")
 const likes=require("./routes/likes")
@@ -115,6 +116,7 @@ app.use("/diary",diary)
 app.use("/favourites",favourites)
 app.use("/likes",likes)
 app.use("/members",members)
+app.use("/list",list)
 
 app.get('/checkLogin',(req,res)=>{
   res.json({ loggedIn: req.isAuthenticated() });

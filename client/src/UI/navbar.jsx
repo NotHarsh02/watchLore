@@ -133,12 +133,12 @@ const userInfo =async()=>{
              <Form className="d-flex " onSubmit={querySearch}>
              <Form.Control
                type="search"
-               placeholder="Search"
+               placeholder="Search now!🔎"
                className="ml-4"
                aria-label="Search"
                onChange={(e) => setQuery(e.target.value)}
              />
-             <Button variant="outline-success" onClick={querySearch} >Search</Button>
+            
            </Form>
           )}
           </div>
@@ -159,12 +159,12 @@ const userInfo =async()=>{
              <Form className="d-flex " onSubmit={querySearch}>
              <Form.Control
                type="search"
-               placeholder="Search"
+               placeholder="Search now!🔎"
                className="ml-4"
                aria-label="Search"
                onChange={(e) => setQuery(e.target.value)}
              />
-             <Button variant="outline-success" onClick={querySearch} >Search</Button>
+             
            </Form>
           )}
          

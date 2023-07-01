@@ -46,8 +46,31 @@ export default function Login(props) {
         setStatus(true);
         toggleSignout()
        
-        // navigate('/signedin')
-        window.location.reload();
+        const promptElement = document.createElement('div');
+        promptElement.textContent = 'Signed In!';
+        promptElement.style.position = 'fixed';
+        promptElement.style.top = '60px';
+        promptElement.style.left = '10px';
+        promptElement.style.padding = '10px';
+        promptElement.style.borderRadius="2%"
+        promptElement.style.backgroundColor = 'green';
+        promptElement.style.color = 'white';
+        promptElement.style.zIndex = '9999';
+        promptElement.style.width="20%";
+        promptElement.style.textAlign="center";
+        
+        document.body.appendChild(promptElement);
+
+        setTimeout(() => {
+          promptElement.remove();
+        }, 2000);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1800);
+          
+        
+        
+        
         }
         else{
           setCredentials(true);
@@ -75,7 +98,7 @@ export default function Login(props) {
         <form onSubmit={handleSubmit} autoComplete="false">
         
         
-          <h3>Sign In</h3>
+          <h2> Sign In</h2>
           <div className={wrongCredentials? 'alert alert-danger credentials' : 'hide'}   role="alert">
           Wrong credentials bro!
         </div>
