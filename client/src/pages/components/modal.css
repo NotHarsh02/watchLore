@@ -65,3 +65,51 @@
     object-position: center;
     border-radius: 5%;
 }
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 0.9rem;
+    
+    margin-left:20%;
+    margin-right: 30%;
+    
+    
+  }
+
+  .listMovies button{
+    visibility: hidden;
+
+}
+.listMovies:hover button{
+    visibility: visible;
+    text-align: center;
+    transform: translate(65%, -140%);
+
+}
+.listMovies:hover img{
+    border:1.7px solid aliceblue;
+    filter: blur(0.7px);
+}
+.listgrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 0.9rem;
+    
+    margin-left:20%;
+    margin-right: 30%;
+    
+    
+  }
+
+  .listMovies{
+    margin-bottom: 0%;
+  }
+  .listMovies img{
+    width:115px
+  }
+  .listAddSpan:hover{
+    background: rgb(25, 135, 84);
+    cursor: default;
+  }

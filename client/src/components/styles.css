@@ -213,11 +213,14 @@ text-align: center;
   border-radius: 2%;
   
 }
-.youtubePlayer{
-  z-index:999;
+.youtubePlayer {
+  z-index: 999;
   position: fixed;
-  transform: translate(40%, -155%)
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
 }
+
 .overlay {
   background: rgba(49,49,49,1);
 }
@@ -289,4 +292,8 @@ text-align: center;
 
 .swiper_container{
   margin-right: "2%";
+}
+
+.listMovies img{
+  width: 100px;
 }
