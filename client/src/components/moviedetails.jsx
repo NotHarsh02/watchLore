@@ -26,6 +26,7 @@ export default function Details(props){
     const day = date.toLocaleDateString('en-US', { weekday: 'long' }); 
     const dateOfMonth = date.getDate(); 
     const [copied,setCopy]=useState(false);
+    const [update,doUpdate]=useState(false);
     const year = date.getFullYear(); 
     
     const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -319,9 +320,9 @@ const deleteFromWatchLater=async()=>{
               }
           })
           if(response.statusText==="OK"){
-            window.location.replace(window.location.pathname + '?timestamp=' + new Date().getTime());
-
-
+                //update here
+               
+                window.location.href = `/films/${data.id}`;
               // togglelist()
               console.log("ok")
           }
@@ -337,31 +338,6 @@ const deleteFromWatchLater=async()=>{
 
 }
 
-const isLogIn = async () => {
-  try {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/checkLogin?${Date.now()}`, {
-      method: "GET",
-      crossDomain: true,
-      credentials: 'include',
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Access-Control-Allow-Origin": "*",   
-      },
-    })
-    const data = await response.json();
-    if (data.loggedIn) {
-      setLoggedIn(true)
-    }
-    else{
-      setLoggedIn(false)
-    }
-  } catch (error) {
-    console.error(error);
-  } finally{
-   setLoading(false)
-  }
-}
 useEffect(() => {
   
    movieDetails()
@@ -379,6 +355,7 @@ useEffect(() => {
   return(
    
       <>
+      
    
     <div className='poster' style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
     
