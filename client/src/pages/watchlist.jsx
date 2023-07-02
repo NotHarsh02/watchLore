@@ -62,7 +62,7 @@ return(<>
   
   <div className='grid-container' >
     {movies.map(movie=><Laterbox id={movie} deletefun={handleDeleteMovies} category="watchlist"/>)}
-    {movies.map(movie=><h1>{movie}</h1>)}
+   
     </div>
     
     </>

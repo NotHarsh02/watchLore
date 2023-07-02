@@ -322,12 +322,12 @@ const deleteFromWatchLater=async()=>{
           if(response.statusText==="OK"){
                 //update here
                
-                setWatchLater(!isWatchLater);
+                setWatchLater(false);
               // togglelist()
               console.log("ok")
           }
           else{
-              console.log(data.id)
+              console.log("watchlater deletion problem")
           }
       
   } catch (error) {
