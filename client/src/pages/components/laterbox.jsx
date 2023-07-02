@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import "../styles.css"
 export default function Laterbox(props){
     const navigate=useNavigate();
-    const {id,forrecomendations,category}=props;
+    const {id,forrecomendations,category,deletefun}=props;
     
     const [data,setData] =useState({})
     const getMovie=async()=>{
@@ -14,6 +14,7 @@ export default function Laterbox(props){
          
          const temp = await response.json();
         // console.log(watchlist)
+        
          setData(temp)
     }
     const details =() =>{ 
@@ -23,24 +24,28 @@ export default function Laterbox(props){
     const deleteMovie=async()=>{
         try {
             
-                const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/${data.id}`,{
-                    method: "DELETE",
-                    crossDomain: true,
-                    credentials: 'include',
-                    headers: {
-                      "Content-Type": "application/json",
-                      "Accept": "application/json",
-                      "Access-Control-Allow-Origin": "*",   
-                    }
-                })
-                if(response.statusText==="OK"){
-                    window.location.reload();
+                // const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/${data.id}`,{
+                //     method: "DELETE",
+                //     crossDomain: true,
+                //     credentials: 'include',
+                //     headers: {
+                //       "Content-Type": "application/json",
+                //       "Accept": "application/json",
+                //       "Access-Control-Allow-Origin": "*",   
+                //     }
+                // })
+                // if(response.statusText==="OK"){
+                    
+                if(true){
+                    console.log(data.id)
+                    deletefun(data.id);
                     // togglelist()
-                    console.log("ok")
+                   
                 }
                 else{
                     console.log(data.id)
                 }
+
             
         } catch (error) {
             console.log(error.message)

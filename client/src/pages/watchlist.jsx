@@ -7,9 +7,16 @@ import "./styles.css"
 export default function Watchlist(props){
     
     const { user} = useParams();
-    const {profile,passtolaterbox}=props
+    const {profile}=props
+    
     const [movies,setMovies] =useState([]);
-    const [loading,isLoading] =useState(true)
+    const [loading,isLoading] =useState(true);
+    const handleDeleteMovies = (id) => {
+      const result=movies.filter(movie => movie !== id);
+      
+      setMovies(result);
+       
+      };
     const watchlaterarray=async()=>{
         try {
             const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/getdata`,{
@@ -23,7 +30,7 @@ export default function Watchlist(props){
                 }
             })
       const data= await response.json()
-      
+      console.log("called")
       setMovies(data.watchLater)
       isLoading(false);
   
@@ -35,8 +42,10 @@ export default function Watchlist(props){
       
     }
     useEffect(()=>{
-        watchlaterarray()    
+      watchlaterarray()
     },[])
+
+ 
     if(!movies.length&&!loading){
         return(<div >
         {!profile&&(<Nav></Nav>)}
@@ -52,7 +61,8 @@ return(<>
 
   
   <div className='grid-container' >
-    {movies.map(movie=><Laterbox id={movie} categpry="watchlist"/>)}
+    {movies.map(movie=><Laterbox id={movie} deletefun={handleDeleteMovies} category="watchlist"/>)}
+    {movies.map(movie=><h1>{movie}</h1>)}
     </div>
     
     </>

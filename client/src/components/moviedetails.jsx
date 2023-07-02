@@ -299,7 +299,7 @@ const deleteMovie=async()=>{
           }
       })
       if(response.statusText==="OK"){
-          window.location.reload();
+        setLike(false)
           // togglelist()
           console.log("ok")
       }
@@ -322,7 +322,7 @@ const deleteFromWatchLater=async()=>{
           if(response.statusText==="OK"){
                 //update here
                
-                window.location.href = `/films/${data.id}`;
+                setWatchLater(false)
               // togglelist()
               console.log("ok")
           }
