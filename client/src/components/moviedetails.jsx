@@ -322,7 +322,7 @@ const deleteFromWatchLater=async()=>{
           if(response.statusText==="OK"){
                 //update here
                
-                setWatchLater(false)
+                setWatchLater(!isWatchLater);
               // togglelist()
               console.log("ok")
           }

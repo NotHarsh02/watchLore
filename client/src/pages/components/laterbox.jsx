@@ -24,19 +24,19 @@ export default function Laterbox(props){
     const deleteMovie=async()=>{
         try {
             
-                // const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/${data.id}`,{
-                //     method: "DELETE",
-                //     crossDomain: true,
-                //     credentials: 'include',
-                //     headers: {
-                //       "Content-Type": "application/json",
-                //       "Accept": "application/json",
-                //       "Access-Control-Allow-Origin": "*",   
-                //     }
-                // })
-                // if(response.statusText==="OK"){
+                const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/${data.id}`,{
+                    method: "DELETE",
+                    crossDomain: true,
+                    credentials: 'include',
+                    headers: {
+                      "Content-Type": "application/json",
+                      "Accept": "application/json",
+                      "Access-Control-Allow-Origin": "*",   
+                    }
+                })
+                if(response.statusText==="OK"){
                     
-                if(true){
+                // if(true){
                     console.log(data.id)
                     deletefun(data.id);
                     // togglelist()
