@@ -2,7 +2,7 @@ import React, { useEffect ,useState} from 'react'
 import { useParams } from 'react-router-dom';
 import Nav from "../UI/navbar";
 import YouTube, { YouTubeProps } from 'react-youtube';
-import { Heart,HeartFill } from 'react-bootstrap-icons';
+import { Heart,HeartFill,Clipboard,ClipboardFill,PlayBtnFill,BookmarkPlus,BookmarkFill,JournalBookmark,JournalBookmarkFill} from 'react-bootstrap-icons';
 import "./styles.css"
 import Loading from "../UI/loading"
 import Carousel from '../UI/carousel';
@@ -21,6 +21,7 @@ export default function Details(props){
     const [moviedate,setMoviedate] =useState("")
     const [videoKey,setVideoKey]=useState("")
     const[trailerexists,setExists]=useState(true)
+    const [isLoggedIn, setLoggedIn] = useState(false);
     const date=new Date();
     const day = date.toLocaleDateString('en-US', { weekday: 'long' }); 
     const dateOfMonth = date.getDate(); 
@@ -260,6 +261,8 @@ const isDiary=()=>{
       }
     });
 }
+
+
 const opts = {
   height: '500',
   width: '840',
@@ -292,23 +295,75 @@ const deleteMovie=async()=>{
           // togglelist()
           console.log("ok")
       }
+      
+}
+
+const deleteFromWatchLater=async()=>{
+  try {
+      
+          const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/${movieId}`,{
+              method: "DELETE",
+              crossDomain: true,
+              credentials: 'include',
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "*",   
+              }
+          })
+          if(response.statusText==="OK"){
+              window.location.reload();
+              // togglelist()
+              console.log("ok")
+          }
+          else{
+              console.log(data.id)
+          }
+      
+  } catch (error) {
+      console.log(error.message)
+  }
 
  
 
+}
+
+const isLogIn = async () => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/checkLogin?${Date.now()}`, {
+      method: "GET",
+      crossDomain: true,
+      credentials: 'include',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Access-Control-Allow-Origin": "*",   
+      },
+    })
+    const data = await response.json();
+    if (data.loggedIn) {
+      setLoggedIn(true)
+    }
+    else{
+      setLoggedIn(false)
+    }
+  } catch (error) {
+    console.error(error);
+  } finally{
+   setLoading(false)
+  }
 }
 useEffect(() => {
   
    movieDetails()
   getProviders();
   getCredits();
+  getRecommendations();
+  getTrailer();
   checkWatchLater();
   checkLikes();
-  getRecommendations();
   isDiary()
-  getTrailer()
-  
- 
-  // console.log(data)
+
 },[] );
 
   
@@ -321,8 +376,12 @@ useEffect(() => {
       <Nav></Nav>
       
      </div>
+    <div style={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
+    <h5 >{data.title}</h5>
+     {copied?<span style={{width:"2%",marginTop:"13.5px"}}><ClipboardFill></ClipboardFill></span>:
+      <span onClick={()=>{navigator.clipboard.writeText(window.location.href); setCopy(true)}}style={{width:"2%",marginTop:"13.5px",cursor:"pointer"}}><Clipboard></Clipboard></span>}
+    </div>
     
-     <h5 >{data.title}</h5>
     
      
      
@@ -340,34 +399,49 @@ useEffect(() => {
     
     
     <div id ="genres">
-    {genre.map(gen=><h5 className='btn btn-info' >{gen.name}</h5>)}
+    {genre.map(gen=><h5 className='btn btn-secondary disabled' >{gen.name}</h5>)}
     </div>
     <h6 id="classTitle">Cast:</h6>
     <div id= "credits">
-    {credits.map(credit=><span className='btn btn-secondary'>{credit.name}</span>)}
+    {credits.map(credit=><span className='btn btn-secondary disabled'>{credit.name}</span>)}
     </div>
     </div>
-    <div className='d-flex flex-column watchlaterbtn' style={{marginLeft:"2%"}}>
-      <div className='d-flex'>
-      {isLiked?<div onClick={deleteMovie} style={{marginLeft:"14%",clickable:"true"  }}><HeartFill color="red" size={40}></HeartFill><br />Liked</div>:
-      <div  style={{marginLeft:"14%",cursor: "pointer"}}onClick={addToLikes} ><Heart size={40} color="red"></Heart>
-      </div>}
-      {copied?<button className='btn btn-info disabled' style={{width:"15%",marginLeft:"18%",marginTop:"10px"}}>Copied!</button>:
-      <button className='btn btn-info' onClick={()=>{navigator.clipboard.writeText(window.location.href); setCopy(true)}}style={{width:"15%",marginLeft:"18%",marginTop:"10px"}}>Copy</button>}
-      <a style={{marginLeft:"2%",textDecoration:"none",fontSize:"large",marginTop:"1%"}}href={`https://tpb25.ukpass.co/search.php?q=${data.title}&cat=201`}target="_blank">Download</a>
+    <div className='d-flex flex-column watchlaterbtn ' style={{marginLeft:"10%"}}>
+      <div className='d-flex' style={{justifyContent:"center",marginLeft:"24%"}}>
+      {/* like icon */}
+      <div>
+      {isLiked ? (
+     <div onClick={deleteMovie} style={{ marginLeft: "14%", clickable: "true" }}><HeartFill color="red" size={40}></HeartFill></div>) : (
+  <div style={{ marginLeft: "14%", cursor: "pointer" }} onClick={addToLikes}><Heart size={40} color="red"></Heart></div>)}
+  <span style={{marginLeft:"30%"}}>Like</span>
+</div>
+    {/* watch later icon */}
+    <div style={{marginLeft:"10%"}}>
+     {isWatchLater?<span onClick={deleteFromWatchLater} className="watchlaterspan"style={{cursor:"pointer",marginLeft:"2%"}}><BookmarkFill size={35}></BookmarkFill></span>:
+      <span className="watchlaterspan" style={{cursor:"pointer",marginLeft:"2%"}}onClick={addToWatchLater} ><BookmarkPlus size={35}></BookmarkPlus></span>}
+        <span style={{marginRight:"7%",marginTop:"8%"}}>WatchList</span>
+    </div>
+    {/* trailer icon */}
+    <div style={{marginLeft:"6%"}}> 
+      {trailerexists&&(<span id="trailerspan" style={{cursor:"pointer",marginLeft:"4%"}}onClick={ toggletrailer}><PlayBtnFill size={42}></PlayBtnFill></span>)}
+      <span style={{marginTop:"5%"}}>Trailer</span>
       </div>
-      {watched?<span style={{marginLeft:"15%",marginTop:"5%",marginBottom:"5%"}}>{`Watched last on ${moviedate}`}</span>:<></>}
-      <span style={{marginLeft:"5%",marginBottom:"5%"}}>Available on:</span>
-    <div className="col-6 logos ">
+      {/* diary icon */}
+      <div style={{marginLeft:"10%"}}>
+      {watched?<></>:(<span onClick={addtodiary} style={{ marginLeft: "5%", clickable: "true" }}><JournalBookmark size={33}></JournalBookmark></span>)}
+      {!watched&&(<span style={{marginTop:"21%"}}>Diary</span>)}
+      </div>
+      </div>
+      {watched?<span style={{marginLeft:"15%",marginTop:"4%",marginBottom:"5%"}}>{`Watched last on ${moviedate}`}</span>:<></>}
+      
+    <div className="col-6 logos " style={{marginTop:'5%'}}>
     {providers.map(provider=><img className='logo' src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`}></img>)}
     </div>
-    <div className='d-flex buttons'>
-      {isWatchLater?<button className='btn btn-info disabled'>in list!</button>:
-      <button className='btn btn-info ' onClick={addToWatchLater} >Watch later</button>}
-      {watched?<></>:(<button className='btn btn-info' onClick={addtodiary}>Add to diary</button>)}
-      {trailerexists&&(<button className='btn btn-info' onClick={ toggletrailer}>Trailer</button>)}
+    
       
-      </div>
+      
+      
+      
       
     </div>
     

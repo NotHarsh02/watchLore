@@ -298,3 +298,12 @@ text-align: center;
   width: 100px;
   
 }
+
+#trailerspan svg{
+  margin-top: -3.5px;
+ 
+}
+
+.watchlaterspan svg{
+  margin-left: 20%;
+}
