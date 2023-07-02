@@ -319,12 +319,12 @@ const deleteFromWatchLater=async()=>{
                 "Access-Control-Allow-Origin": "*",   
               }
           })
-          if(response.statusText==="OK"){
+          if(response.statusText==="ok"){
                 //update here
-               
+                
                 setWatchLater(false);
               // togglelist()
-              console.log("ok")
+             
           }
           else{
               console.log("watchlater deletion problem")
