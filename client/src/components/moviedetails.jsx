@@ -299,7 +299,7 @@ const deleteMovie=async()=>{
           }
       })
       
-      if(response.statusText==="OK"){
+      if(response.status===200){
         
         setLike(false)
           // togglelist()
@@ -307,7 +307,7 @@ const deleteMovie=async()=>{
       }
       else{
         console.log(response)
-   console.log("dltionproblem(likes)");
+   console.log("dltionproblemharsh");
       }
       
 }
