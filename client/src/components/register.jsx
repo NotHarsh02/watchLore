@@ -139,8 +139,8 @@ export default function Register(props) {
             </button>
           </div>
           {existing &&(
-             <p className="forgot-password text-right">
-             Already registered, <a role="button" className="linkLike" onClick={existingLogin}>sign in?</a>
+             <p style={{color:"black",marginTop:"3%"}}className="forgot-password text-right">
+             Already registered? <a role="button" className="linkLike" onClick={existingLogin}>Sign in</a>
            </p>
           )}
          

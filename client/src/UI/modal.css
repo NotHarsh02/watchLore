@@ -81,7 +81,8 @@
        margin-bottom: 60%;
     }
     .searchbox{
-        transform: translate(-75%,-8%);
-        margin-bottom: 10%;
+        /* transform: translate(-50%,-8%); */
+        /* margin-bottom: 10%; */
+        height: 25px;
     }
 }

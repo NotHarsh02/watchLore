@@ -150,7 +150,7 @@ const userInfo =async()=>{
         <Container>
           <Navbar.Brand href="/">WatchAlong.TM</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link onClick={toggleSignIn}>Sign In</Nav.Link>
+            <Nav.Link onClick={toggleSignIn}>Login</Nav.Link>
             <Nav.Link href="/lists">Lists</Nav.Link>
           <Nav.Link href="/members">Members</Nav.Link>
             
@@ -160,7 +160,7 @@ const userInfo =async()=>{
              <Form.Control
                type="search"
                placeholder="Search now!🔎"
-               className="ml-4"
+               className="ml-4 searchbox "
                aria-label="Search"
                onChange={(e) => setQuery(e.target.value)}
              />

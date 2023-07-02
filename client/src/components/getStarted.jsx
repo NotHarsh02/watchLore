@@ -7,6 +7,7 @@ export default function Letsgo(){
   const toggleSignUp =()=>{
     setsignUp(!signUp);
   }
+  
     return(<>
       <div id='getStarted'>
         <div>
@@ -29,6 +30,7 @@ export default function Letsgo(){
         </div>
       </div>
       )}
+   
       </>
     )
 }

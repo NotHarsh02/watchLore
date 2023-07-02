@@ -332,25 +332,40 @@ text-align: center;
   h5{
     margin-left: 0%;
   }
-  .navbar-nav{
+  .navbar-nav > *:not(:first-child) {
     display: none;
   }
-  .dropdown {
-        width: 10%;
-        transform: translate(600%,0%);
-        
+  .navbar-nav{
+    transform: translate(-10%,0%);
+    
   }
+  
+  /* .dropdown button {
+        
+       width: 10px;
+       height: 30px;
+       
+        
+  } */
   .dropdown-menu.show{
     margin-right: 10%;
   }
-  /* .dropdown button{
+  .dropdown button{
     display: none;
-  } */
+  }
   .dropdownform{
     
-    flex-direction: column;
-    transform: translate(0%,27%);
+     
+    /* transform: translate(0%,-22%); */
   }
+  /* .dropdown,.dropdown button{
+    width: 25px;
+    height: 25px;
+  }
+  .dropdown button svg{
+    transform: translate(-45%,-30%);
+  } */
+  
   #welcomeMessage{
     font-size: xx-large;
     margin-left: 2%;
@@ -362,8 +377,11 @@ text-align: center;
     margin-right: 2%;
     
   }
+  .navbar-brand{
+    /* transform: translate(0%,-30%); */
+  }
 }
-@media (max-width: 397px) {
+@media (max-width: 500px) {
  #seemore{
     margin-left: 7%;
     content: "Check out your profile now!";

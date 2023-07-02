@@ -3,12 +3,14 @@ import AddFavourites from './addfavourites';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Laterbox from './laterbox';
+import Dropdown from "../../components/userdropdown"
 export default function Profile(){
   const [isdone,setDone]=useState(false)
   const [favs,setfavs] =useState([])
   const[removedone,setremovedone] =useState(false)
   const [nosuggestions,isSuggestions] =useState(false)
   const[recData,setRecData]=useState([])
+  const[data,setData] =useState("")
   const getfavs=useSelector(state=>state.favmovies.movies)
   const navigate=useNavigate();
   const Recarrayafterop =(array)=>{
@@ -20,6 +22,7 @@ export default function Profile(){
     let link =`/films/${id}`
          navigate(link)
   }
+ 
   const addImage =()=>{
     if(!favs){
   console.log("empty favourites array")
@@ -167,9 +170,29 @@ temp.results.map((result)=>{
   }
 
 }
+const logOut=async()=>{
+  try {
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/logout`, {
+      method: "GET",
+      crossDomain: true,
+      credentials: 'include',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",   
+        "Access-Control-Allow-Origin": "*",   
+      },
+    })
+   
+    navigate('/')
+    window.location.reload();
+  } catch (error) {
+    console.error(error);
+  }  
+}
       useEffect(()=>{
         favarray()
         recarray()
+       
     },[])
     useEffect(()=>{
       addImage() 
@@ -177,6 +200,10 @@ temp.results.map((result)=>{
 
     return(<>
     <div>
+      <div>
+      <button id="signoutbutton"onClick={logOut} className='btn btn-danger'>Signout</button>
+      </div>
+
     <span id="favouriteFilmsSpan">Favourites Films</span>
     
     <div className="d-flex justify-content-around myfavmovies" >
