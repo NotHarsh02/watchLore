@@ -325,9 +325,8 @@ const deleteFromWatchLater=async()=>{
                 "Access-Control-Allow-Origin": "*",   
               }
           })
-          const res=await response.json()
-          console.log(res);
-          if(response.statusText==="OK"){
+          
+          if(response.status===200){
                 //update here
                 
                 setWatchLater(false);
@@ -335,7 +334,7 @@ const deleteFromWatchLater=async()=>{
              
           }
           else{
-              console.log("watchlater deletion problem")
+              console.log("watchlater deletion harsh")
           }
       
   } catch (error) {
