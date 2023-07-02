@@ -319,7 +319,8 @@ const deleteFromWatchLater=async()=>{
               }
           })
           if(response.statusText==="OK"){
-            window.location.href = window.location.href;
+            window.location.href = window.location.href + '?refresh=true';
+
               // togglelist()
               console.log("ok")
           }
