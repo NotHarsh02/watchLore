@@ -19,9 +19,30 @@ export default function Home(props){
    const[popular,setPopular] =useState([]);
    const [data,setData] =useState([]);
    const [isLoggedIn, setLoggedIn] = useState(false);
+   const [newUser,setNewUser]=useState(true);
 
-   
- 
+   const recArray=async()=>{
+    try {
+      const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/likes/getdata`,{
+        method: "GET",
+        crossDomain: true,
+        credentials: 'include',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "Access-Control-Allow-Origin": "*",  
+        } 
+        })
+        const data= await response.json();
+        console.log(data.likes.length)
+        if(data.likes.length!==0){
+          setNewUser(false);
+        }
+      
+    } catch (error) {
+      
+    }
+   }
 const nowRunning =async()=>{
    const response =await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}`)
       if (!response.ok) {
@@ -87,6 +108,7 @@ const isLogIn = async () => {
 useEffect(()=>{
    nowRunning()
    isLogIn()
+   recArray();
    
    // toprated()
    // console.log(data)
@@ -108,8 +130,13 @@ if (isLoading) {
  }
 return(<>
 <Nav></Nav>
+{isLoggedIn&&(
+  !newUser?((isLoggedIn)&&(<h1 id="welcomeMessage">{`Welcome back,${data}.\nHere's what we recommend for you:`}</h1>)):
+  (<h1 id="welcomeMessage">{`Welcome to  Watchlore.TM,${data}`} </h1>)
 
-{(isLoggedIn)&&(<h1 id="welcomeMessage">{`Welcome back,${data}.\nHere's what we recommend for you:`}</h1>)}
+)}
+
+
 
 {(!isLoggedIn)&&(<>
 <div className='fullscreen'>
