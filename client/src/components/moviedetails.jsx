@@ -276,7 +276,14 @@ const _onReady=(event)=> {
   event.target.pauseVideo();
 }
 const toggletrailer=()=>{
-  setTrailer(!trailer)
+  if(window.innerWidth <= 1000){
+    const youtubeUrl = `https://www.youtube.com/watch?v=${videoKey}`;
+    window.location.href = youtubeUrl;
+  }
+  else{
+    setTrailer(!trailer)
+  }
+  
 }
 const deleteMovie=async()=>{
   
@@ -378,8 +385,8 @@ useEffect(() => {
      </div>
     <div style={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
     <h5 >{data.title}</h5>
-     {copied?<span style={{width:"2%",marginTop:"13.5px"}}><ClipboardFill></ClipboardFill></span>:
-      <span onClick={()=>{navigator.clipboard.writeText(window.location.href); setCopy(true)}}style={{width:"2%",marginTop:"13.5px",cursor:"pointer"}}><Clipboard></Clipboard></span>}
+     {copied?<span className="copywala"style={{width:"2%",marginTop:"13.5px"}}><ClipboardFill></ClipboardFill></span>:
+      <span className='copywala' onClick={()=>{navigator.clipboard.writeText(window.location.href); setCopy(true)}}style={{width:"2%",marginTop:"13.5px",cursor:"pointer"}}><Clipboard></Clipboard></span>}
     </div>
     
     
@@ -406,8 +413,8 @@ useEffect(() => {
     {credits.map(credit=><span className='btn btn-secondary disabled'>{credit.name}</span>)}
     </div>
     </div>
-    <div className='d-flex flex-column watchlaterbtn ' style={{marginLeft:"10%"}}>
-      <div className='d-flex' style={{justifyContent:"center",marginLeft:"24%"}}>
+    <div className='d-flex flex-column dbbuttonparent'>
+      <div className='d-flex buttonsfordb' style={{justifyContent:"center"}}>
       {/* like icon */}
       <div>
       {isLiked ? (
@@ -435,7 +442,7 @@ useEffect(() => {
       {watched?<span style={{marginLeft:"15%",marginTop:"4%",marginBottom:"5%"}}>{`Watched last on ${moviedate}`}</span>:<></>}
       
     <div className="col-6 logos " style={{marginTop:'5%'}}>
-    {providers.map(provider=><img className='logo' src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`}></img>)}
+    {providers.slice(0,3).map(provider=><img className='logo' src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`}></img>)}
     </div>
     
       

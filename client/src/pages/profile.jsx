@@ -64,7 +64,7 @@ export default function Profile(props){
 
     
     {/* <div style={{border:"0.1px solid white",height:"7%", marginLeft:"10%",marginRight:"10%"}}> */}
-    <div className='d-flex categories' style={{marginLeft:"10%", marginRight:"10%"}}>
+    <div className='d-flex categories' >
     <span className={catStylec} onClick={renderProfile} >Profile</span>
     <span className={catStyled} onClick={renderLikes}>Likes</span>
     <span className={catStylea} onClick={renderWatchlist} >Watchlist</span>

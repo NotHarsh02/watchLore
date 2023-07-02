@@ -1,5 +1,7 @@
 body,html{
     color:aliceblue;
+    
+   
 }
 
 .searchResult img{
@@ -48,7 +50,7 @@ body,html{
     grid-template-rows: repeat(4, 1fr);
     grid-gap: 0.9rem;
     
-    margin-left:20%;
+    /* margin-left:15%; */
     margin-right: 30%;
     
     
@@ -127,7 +129,8 @@ body,html{
 }
 .categories{
     margin-top: 2%;
-    margin-left: 43% !important;
+    margin-left: 37% ;
+    margin-right: 10%;
 }
 
 h3{
@@ -139,4 +142,123 @@ h3{
     font-size:x-large;
     color: white;
     font-weight: 400;
+}
+
+#favouriteFilmsSpan{
+    margin-left: 15%;
+    margin-top: 2%;
+}
+.myfavmovies{
+    margin-right: 60%;
+    margin-left: 15%;
+    height: 120px;
+    margin-top:1.5%;
+    
+}
+.myfavmovies div{
+    background-color: gray;
+    width: 90px;
+    border-radius: 10%;
+    margin-right: 2%;
+
+    
+}
+#donebutton{
+    margin-left: 15%;
+    margin-top: 2%;
+    
+}
+#suggestionsTitle{
+    margin-left: 15%;
+    margin-top:2% ;
+    margin-bottom: 1%;
+    
+}
+
+@media (max-width: 1000px){
+    .searchResult{
+        margin-bottom: 8%;
+        margin-left: 0%;
+    }
+    .customh5{
+        margin-left: 0%;
+        margin-top: 5%;
+    }
+    .poster{
+        margin-left: 0%;
+        margin-right: 0%;
+        box-shadow: none;
+        height: 35%;
+        border-radius: 1%;
+    }
+    .infoleft img{
+        width:100px;
+        height:auto;
+        margin-left: 5%;
+        
+    }
+    .info{
+        margin-left: 0%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 2%!important;
+    }
+    .inforight{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .buttonsfordb,.dbbuttonparent{
+           margin-left: -5.5%;
+           margin-top: 6%;
+    }
+    .col-6{
+        width:100%;
+    }
+    .col-8{
+        width:100%;
+    }
+    .copywala{
+        transform: translate(3%, -42%);
+    }
+    .logos{
+        margin-left: 11%;
+        max-width: 90%;
+        margin-bottom: 10%;
+    }
+    .recCard{
+        margin-left: 0%;
+    }
+    .categories{
+        margin-left: 2%;
+    }
+    .categories span{
+        font-size: larger;
+    }
+    #favouriteFilmsSpan{
+        margin-left: 1%;
+        margin-top: 2%;
+    }
+    .myfavmovies{
+       margin-right: 0%;
+        margin-left: 7%;
+        max-width: 80%;
+    }
+    .myfavmovies div img{
+        width:80px;
+    }
+    .myfavmovies div{
+        width: 80px;
+    }
+    #donebutton{
+        margin-left: 2%;
+        margin-top: 3%;
+    }
+    #suggestionsTitle{
+        margin-left: 2%;
+    }
+    .grid-item{
+        height: 6.5rem;
+        width: 5rem;
+    }
 }

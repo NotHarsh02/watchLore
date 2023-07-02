@@ -75,3 +75,13 @@
    background-color: rgb(153,145,143);
    
 }
+@media (max-width: 1000px){
+    #getStarted div{
+       margin-top: 0%;
+       margin-bottom: 60%;
+    }
+    .searchbox{
+        transform: translate(-75%,-8%);
+        margin-bottom: 10%;
+    }
+}

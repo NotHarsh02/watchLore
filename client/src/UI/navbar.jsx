@@ -127,14 +127,14 @@ const userInfo =async()=>{
           <Nav.Link href="/members">Members</Nav.Link>
           {/* <Nav.Link  id="userNav"><Dropdown user={data} signout={signout}></Dropdown></Nav.Link> */}
         </Nav>
-        <div className='d-flex mt-2 '>
+        <div className='d-flex mt-2 dropdownform'>
         <Dropdown user={data} signout={signout}></Dropdown>
         {(!nosearch)&&(
              <Form className="d-flex " onSubmit={querySearch}>
              <Form.Control
                type="search"
                placeholder="Search now!🔎"
-               className="ml-4"
+               className="ml-4 searchbox"
                aria-label="Search"
                onChange={(e) => setQuery(e.target.value)}
              />

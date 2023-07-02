@@ -55,7 +55,7 @@ await Promise.all(data.likes.map(async(id,index)=>
 let temp = await res.json()
 if(data.likes.length>4){
   //get some recomendattions from each movie in likes array
-temp.results.slice(0,4).map((result)=>{
+temp.results.slice(0,6).map((result)=>{
 
   if(!data.likes.includes(result.id)){
     finalwala.push(result)
@@ -76,9 +76,9 @@ else{
 const updatedfinal=Recarrayafterop(finalwala)
 
 
-if (finalwala.length>30){
+if (finalwala.length>40){
  
-setRec(updatedfinal.slice(0,30))
+setRec(updatedfinal.slice(0,40))
 }
 
 else{

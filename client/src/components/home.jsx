@@ -122,7 +122,7 @@ return(<>
 )
 }
 
-{(isLoggedIn)&&(<><Carousel allrec={true} ></Carousel><a href={`/profile/${data}`} style={{marginLeft:"83%"}}>See more</a></> )}
+{(isLoggedIn)&&(<><Carousel allrec={true} ></Carousel><a id="seemore" href={`/profile/${data}`} >See more</a></> )}
 {isLoggedIn&&(<Carousel  ></Carousel> )}
 {isLoggedIn&&(<Carousel highrated={true} ></Carousel> )}
 

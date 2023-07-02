@@ -71,7 +71,7 @@
     grid-template-rows: repeat(4, 1fr);
     grid-gap: 0.9rem;
     
-    margin-left:20%;
+    margin-left:15%;
     margin-right: 30%;
     
     
@@ -113,4 +113,12 @@
     background: rgb(25, 135, 84);
     cursor: default;
     
+  }
+  @media (max-width: 1000px){
+    .grid-container {
+        margin-left: 2%;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-gap: 0.4rem;
+    }
   }

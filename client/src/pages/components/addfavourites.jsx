@@ -42,7 +42,7 @@ const deleteImage=()=>{
 
 }
     return(<>
-        <div style={{backgroundColor:"gray",width:"90px",borderRadius:"10%"}}id={divNumber}>
+        <div id={divNumber}>
         {!donestatus?(<button className="btn btn-outline-dark" onClick={addMovie} style={{marginLeft:"17%",marginTop:"45%"}} type="submit">Add</button>):
         (<button className="btn "  style={{display:"none"}} type="submit">Add</button>)}
         <div className='favmovie'>

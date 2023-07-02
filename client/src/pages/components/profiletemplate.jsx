@@ -177,19 +177,19 @@ temp.results.map((result)=>{
 
     return(<>
     <div>
-    <span style={{marginLeft:"15%",marginTop:"2%"}}>Favourites Films</span>
+    <span id="favouriteFilmsSpan">Favourites Films</span>
     
-    <div className="d-flex justify-content-around" style={{marginRight:"60%",marginLeft:"15%" ,height:"120px",marginTop:"1.5%"}}>
+    <div className="d-flex justify-content-around myfavmovies" >
    {renderDivs()}
     </div>
     
-      {!isdone?(<button className=' btn btn-info ' id="donebutton"onClick={addMovies} style={{marginLeft:"15%",marginTop:"2%"}}>Done</button>)
+      {!isdone?(<button className=' btn btn-info ' id="donebutton"onClick={addMovies} >Done</button>)
       :(<button className=' btn btn-info disabled' id="donebutton" style={{display:"none"}}>Added!</button>)}
     
-    {!nosuggestions?(<span style={{marginLeft:"15%",marginTop:"2%",marginBottom:"1%"}}>Movies youd like:</span>):
+    {!nosuggestions?(<span id="suggestionsTitle" >Movies youd like:</span>):
     (<span style={{marginLeft:"15%",marginTop:"2%",marginBottom:"1%"}}>We dont have any suggestions for you,<br></br> please use this app more to get suggestions</span>)}
      {/* recomennded movies below */}
-  <div className='grid-container' style={{marginLeft:"15%"}}>
+  <div className='grid-container' >
     {recData.map(movie=><Laterbox id={movie.id} forrecomendations={true}/>)}
     </div>
     

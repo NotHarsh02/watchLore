@@ -1,7 +1,7 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import React  from 'react'
 import { useNavigate} from 'react-router-dom';
-
+import { PersonFillGear } from 'react-bootstrap-icons';
 export default function Userdropdown(props) {
     
     const {user,signout} = props
@@ -40,7 +40,7 @@ const goToProfile=()=>{
   return (
     <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
-        {user}
+      <PersonFillGear size={25}></PersonFillGear>
       </Dropdown.Toggle>
 
       <Dropdown.Menu>

@@ -1,6 +1,7 @@
 /* .linkLike{
  
 } */
+
 .hide{
     display: none;
   }
@@ -17,7 +18,12 @@
   display: none; */
   
 }
-
+.buttonsfordb{
+  margin-left: 24%;
+}
+.dbbuttonparent{
+  margin-left:10%;
+}
 
 .swiper-slide {
   text-align: center;
@@ -43,6 +49,7 @@
   object-fit: cover;
   border-radius: 5%;
 }
+
 .swiperslidecustom img{
   width: auto;
   height: 15rem;
@@ -141,7 +148,9 @@ span{
   color: aliceblue;
   display: block;
 }
-
+#seemore{
+  margin-left: 83%
+}
 .logo {
 
   height:2rem;
@@ -306,4 +315,62 @@ text-align: center;
 
 .watchlaterspan svg{
   margin-left: 20%;
+}
+
+@media (max-width: 1000px) {
+  .swiper-slide img {
+    display: block;
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5%;
+  }
+  .carousel{
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  h5{
+    margin-left: 0%;
+  }
+  .navbar-nav{
+    display: none;
+  }
+  .dropdown {
+        width: 10%;
+        transform: translate(600%,0%);
+        
+  }
+  .dropdown-menu.show{
+    margin-right: 10%;
+  }
+  /* .dropdown button{
+    display: none;
+  } */
+  .dropdownform{
+    
+    flex-direction: column;
+    transform: translate(0%,27%);
+  }
+  #welcomeMessage{
+    font-size: xx-large;
+    margin-left: 2%;
+  }
+  .fullscreen{
+    height: 50%;
+    box-shadow: none;
+    margin-left: 2%;
+    margin-right: 2%;
+    
+  }
+}
+@media (max-width: 397px) {
+ #seemore{
+    margin-left: 7%;
+    content: "Check out your profile now!";
+    text-decoration: none;
+    font-family: 'Zen Kurenaido', sans-serif;
+    font-size: x-large;
+    cursor: pointer;
+ }
+ 
 }
