@@ -298,14 +298,16 @@ const deleteMovie=async()=>{
             "Access-Control-Allow-Origin": "*",   
           }
       })
-      console.log(response)
+      
       if(response.statusText==="OK"){
+        
         setLike(false)
           // togglelist()
           console.log("ok")
       }
       else{
-   console.log("dltionproblem");
+        console.log(response)
+   console.log("dltionproblem(likes)");
       }
       
 }
@@ -323,7 +325,8 @@ const deleteFromWatchLater=async()=>{
                 "Access-Control-Allow-Origin": "*",   
               }
           })
-          console.log(response.json())
+          const res=await response.json()
+          console.log(res);
           if(response.statusText==="OK"){
                 //update here
                 
