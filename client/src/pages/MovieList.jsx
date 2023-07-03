@@ -3,6 +3,12 @@ import { useNavigate} from 'react-router-dom';
 import Nav from "../UI/navbar"
 export default function MovieList(){
     const navigate = useNavigate();
+    if(window.innerWidth <= 1000){
+      return(<>
+      <Nav></Nav>
+      <h3>This page is not yet ready for mobile devices.</h3>
+      </>)
+    }
     return(
         <>
         <Nav></Nav>
