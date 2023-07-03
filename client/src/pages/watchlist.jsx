@@ -1,23 +1,30 @@
 import React ,{useEffect,useState}from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams ,useNavigate} from 'react-router-dom';
 import Laterbox from "./components/laterbox"
 import Nav from "../UI/navbar"
 import "./styles.css"
 
 export default function Watchlist(props){
+  const navigate=useNavigate();
+  
     
     const { user} = useParams();
     const {profile}=props
     
-    const [movies,setMovies] =useState([]);
+    const [ids,setIds] =useState([]);
     const [loading,isLoading] =useState(true);
-    const handleDeleteMovies = (id) => {
-      const result=movies.filter(movie => movie !== id);
+    const[movies,setMovies]=useState([])
+    // const handleDeleteMovies = (id) => {
+    //   const result=movies.filter(movie => movie !== id);
       
-      setMovies(result);
+    //   setMovies(result);
        
-      };
-    const watchlaterarray=async()=>{
+    //   };
+    const details =(id) =>{ 
+      let link =`/films/${id}`
+       navigate(link)
+    }
+    const watchlaterids=async()=>{
         try {
             const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/getdata`,{
                 method: "GET",
@@ -31,7 +38,9 @@ export default function Watchlist(props){
             })
       const data= await response.json()
       console.log("called")
-      setMovies(data.watchLater)
+      
+      setIds(data.watchLater)
+      
       isLoading(false);
   
       
@@ -41,12 +50,69 @@ export default function Watchlist(props){
         }
       
     }
+const getWatchlist=async()=>{
+  const results=[];
+   await Promise.all (ids.map(async(id)=>{
+      const response =await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`)
+      if (!response.ok) {
+        console.log("error in watchlost get")
+       }
+       
+       const temp = await response.json();
+      // console.log(watchlist)
+      
+       results.push(temp);
+  
+    }))
+    isLoading(false);
+    console.log(ids)
+    setMovies(results);
+  }
+  const deleteMovie=async(id)=>{
+    try {
+        
+            // const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/watchlater/${id}`,{
+            //     method: "DELETE",
+            //     crossDomain: true,
+            //     credentials: 'include',
+            //     headers: {
+            //       "Content-Type": "application/json",
+            //       "Accept": "application/json",
+            //       "Access-Control-Allow-Origin": "*",   
+            //     }
+            // })
+            // if(response.status===200){
+              if(true){
+                
+              setMovies(movies.filter(movie => movie.id !== id))
+              isLoading(false)
+               
+            }
+            else{
+                console.log("error deleting movie from watchlater")
+            }
+
+        
+    } catch (error) {
+        console.log(error.message)
+    }
+ 
+   
+  
+}
+      
     useEffect(()=>{
-      watchlaterarray()
+      watchlaterids();
+     
     },[])
+    useEffect(()=>{
+      
+      getWatchlist()
+    },[ids])
+    
 
  
-    if(!movies.length&&!loading){
+    if(movies.length===0&&!isLoading){
         return(<div >
         {!profile&&(<Nav></Nav>)}
         <h1 className='nomovies'>No movies in your watchlater,add now!</h1>
@@ -54,6 +120,7 @@ export default function Watchlist(props){
         )
     }
 return(<>
+ 
  {!profile&&(<><Nav></Nav>
  <h5 style={{borderBottom: "1px solid #456" ,marginLeft:"20%",marginRight:"22.8%",textAlign:"start",marginBottom:"2%"}}>{`${user.charAt(0).toUpperCase()+ user.slice(1)} wants to see ${movies.length} film${movies.length===1?"":"s"}` }</h5>
  </>)}
@@ -61,7 +128,10 @@ return(<>
 
   
   <div className='grid-container' >
-    {movies.map(movie=><Laterbox id={movie} deletefun={handleDeleteMovies} category="watchlist"/>)}
+    {movies.map(movie=> <div className='grid-item ' key={movie.id}> 
+            <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}  onClick={()=>{details(movie.id)}} alt={movie.title} />
+            <button className='custombutton btn btn-danger' onClick={()=>deleteMovie(movie.id)}>Dlt</button>
+        </div>)}
    
     </div>
     

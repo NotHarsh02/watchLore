@@ -306,8 +306,8 @@ const deleteMovie=async()=>{
           console.log("ok")
       }
       else{
-        console.log(response)
-   console.log("dltionproblemharsh");
+        
+   console.log("like deletion");
       }
       
 }
@@ -334,7 +334,7 @@ const deleteFromWatchLater=async()=>{
              
           }
           else{
-              console.log("watchlater deletion harsh")
+              console.log("watchlater deletion ")
           }
       
   } catch (error) {
@@ -372,7 +372,7 @@ useEffect(() => {
      </div>
     <div style={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
     <h5 >{data.title}</h5>
-     {copied?<span className="copywala"style={{width:"2%",marginTop:"13.5px"}}><ClipboardFill></ClipboardFill></span>:
+     {copied?<span className="copywala"style={{width:"2%",marginTop:"13.5px",cursor:"pointer"}}><ClipboardFill></ClipboardFill></span>:
       <span className='copywala' onClick={()=>{navigator.clipboard.writeText(window.location.href); setCopy(true)}}style={{width:"2%",marginTop:"13.5px",cursor:"pointer"}}><Clipboard></Clipboard></span>}
     </div>
     
@@ -405,7 +405,7 @@ useEffect(() => {
       {/* like icon */}
       <div>
       {isLiked ? (
-     <div onClick={deleteMovie} style={{ marginLeft: "14%", clickable: "true" }}><HeartFill color="red" size={40}></HeartFill></div>) : (
+     <div onClick={deleteMovie} style={{ marginLeft: "14%",cursor:"pointer" }}><HeartFill color="red" size={40}></HeartFill></div>) : (
   <div style={{ marginLeft: "14%", cursor: "pointer" }} onClick={addToLikes}><Heart size={40} color="red"></Heart></div>)}
   <span style={{marginLeft:"30%"}}>Like</span>
 </div>
@@ -417,8 +417,9 @@ useEffect(() => {
     </div>
     {/* trailer icon */}
     <div style={{marginLeft:"6%"}}> 
-      {trailerexists&&(<span id="trailerspan" style={{cursor:"pointer",marginLeft:"4%"}}onClick={ toggletrailer}><PlayBtnFill size={42}></PlayBtnFill></span>)}
-      <span style={{marginTop:"5%"}}>Trailer</span>
+      {trailerexists&&(<><span id="trailerspan" style={{cursor:"pointer",marginLeft:"4%"}}onClick={ toggletrailer}><PlayBtnFill size={42}></PlayBtnFill></span>
+      <span style={{marginTop:"5%"}}>Trailer</span></>)}
+      
       </div>
       {/* diary icon */}
       <div style={{marginLeft:"10%"}}>

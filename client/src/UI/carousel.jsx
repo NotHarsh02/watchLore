@@ -48,7 +48,7 @@ const data= await response.json()
 // console.log(data)
 
 let finalwala=[]
-await Promise.all(data.likes.map(async(id,index)=>
+await Promise.all(data.likes.map(async(id)=>
 { 
  
   let res= await fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`)
