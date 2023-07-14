@@ -37,7 +37,7 @@ export default function Newlist(){
         })
           .then((res) => res.json())
           .then((data) => {
-            
+            console.log(data.status);
             if (data.status == "ok") {
               console.log("success")
               const promptElement = document.createElement('div');

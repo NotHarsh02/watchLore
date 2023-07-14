@@ -149,7 +149,9 @@ span{
   display: block;
 }
 #seemore{
-  margin-left: 83%
+  display: none;
+  
+  text-decoration: none;
 }
 .logo {
 
@@ -328,6 +330,10 @@ text-align: center;
   .carousel{
     margin-left: 0%;
     margin-right: 0%;
+    
+  }
+  .carousel h5{
+    margin-top: 20%;
   }
   h5{
     margin-left: 0%;
@@ -380,9 +386,21 @@ text-align: center;
   .navbar-brand{
     /* transform: translate(0%,-30%); */
   }
+  #seemore{
+    display: flex;
+    justify-content: center;
+      
+      content: "Check out your profile now!";
+      text-decoration: none;
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: xx-large;
+      cursor: pointer;
+      margin-bottom: 15%;
+   }
 }
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
  #seemore{
+  display: flex;
     margin-left: 7%;
     content: "Check out your profile now!";
     text-decoration: none;
@@ -391,4 +409,4 @@ text-align: center;
     cursor: pointer;
  }
  
-}
+} */

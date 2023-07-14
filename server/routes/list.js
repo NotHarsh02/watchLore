@@ -33,5 +33,32 @@ router.post("/add",async(req,res)=>{
    
 
 })
+router.get("/getLists",async(req,res)=>{
+  try {
+    const listObject = await List.find().populate('user', 'username');
+    // const idArray=listObject.map((list)=>list.movies);
+    if(listObject){
+      res.send(listObject);
+    }
+    else{
+      res.send("no");
+    }
+    
+    
+    // 
+  } catch (error) {
+    
+  }
+  
+})
+router.post("/getList",async(req,res)=>{
+  try {
+    const {listname}=req.body;
+    const listfound= await List.find({name:listname});
+    res.send(listfound);
+  } catch (error) {
+    
+  }
+})
 
 module.exports=router;

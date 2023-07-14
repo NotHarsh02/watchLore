@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react'
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/home"
 import Loginpage from "./pages/loginPage"
+import ListPage from "./pages/listpage"
 // import Profile from './pages/profile';
 import MovieDetails from "./components/moviedetails"
 import {createBrowserRouter,RouterProvider,Route} from 'react-router-dom'
@@ -23,6 +24,7 @@ const router =createBrowserRouter([
   {path:'/members',element:<Member/>},
   {path:"/lists",element:<MovieList/>},
   {path:"/lists/new",element:<Newlist/>},
+  {path:"/lists/:listname",element:<ListPage/>},
   {path:"/",element:<Home/>},
   {path:'*',element:<Wrong/>}
 
