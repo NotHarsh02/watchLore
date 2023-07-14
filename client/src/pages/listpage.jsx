@@ -52,7 +52,7 @@ export default function Listpage(){
 
     return(<>
     <Nav></Nav>
-        <div style={{display:"block",marginLeft:"15%"}}>
+        <div style={{display:"block",marginLeft:"15%",marginRight:"29%"}}>
         <h3 style={{display:"block",marginLeft:"0%"}}>{listname} </h3>
         {<p>{description}</p>}
         </div>
