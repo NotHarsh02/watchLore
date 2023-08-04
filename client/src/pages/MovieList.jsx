@@ -1,6 +1,7 @@
 import React, { Component,useEffect,useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 import Nav from "../UI/navbar"
+import { PencilFill } from 'react-bootstrap-icons';
 import "./styles.css"
 import Moviebox from '../components/movieBox';
 export default function MovieList(){
@@ -57,7 +58,11 @@ user.push(id.user.username);
         console.error(error);
       } 
     }
-
+   const editList=(index,e)=>{
+    e.stopPropagation();
+    let listlink =`/lists/${listName[index]}/edit`;
+      navigate(listlink)
+   }
     const gotoListPage=(index)=>{
       let listlink =`/lists/${listName[index]}`;
       navigate(listlink)
@@ -86,10 +91,14 @@ user.push(id.user.username);
 <div id="alllists">
           {listMovies.map((list, index) => (
   <div key={index} className='movielist'onClick={()=>gotoListPage(index)}>
-   <span >{listName[index]}</span>
+    <div className='d-flex'>
+    <span style={{marginRight:"50%"}}>{listName[index]}</span>
+    <PencilFill size={20} onClick={(e)=>editList(index,e)} />
+    </div>
+   
    <span>{username[index].charAt(0).toUpperCase() + username[index].slice(1)}</span>
    
-    
+   
     <div className='moviesoflist'>
     {list.slice(0,4).map((movie) => (
       // <span key={movie.id}>{movie.title}</span>

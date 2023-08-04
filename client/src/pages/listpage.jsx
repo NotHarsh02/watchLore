@@ -1,8 +1,10 @@
 import React, { Component ,useEffect,useState} from 'react';
 import { useParams } from 'react-router-dom'
 import Moviebox from '../components/movieBox';
+import { useNavigate} from 'react-router-dom';
 import Nav from "../UI/navbar"
 export default function Listpage(){
+    const navigate = useNavigate();
     let { listname } = useParams();
     const [listData,setListData]=useState([]);
     const [moviearr,setmoviearr]=useState([]);
@@ -40,6 +42,12 @@ export default function Listpage(){
             console.log("fetchlist not working")
         }
     }
+
+    const goToEditPage=(name)=>{
+        let listlink =`/lists/${name}/edit`;
+        navigate(listlink)
+
+    }
   
         
 
@@ -54,7 +62,9 @@ export default function Listpage(){
     <Nav></Nav>
         <div style={{display:"block",marginLeft:"15%",marginRight:"29%"}}>
         <h3 style={{display:"block",marginLeft:"0%"}}>{listname} </h3>
+       
         {<p>{description}</p>}
+        <button className="btn btn-danger" onClick={()=>goToEditPage(listname)}>Edit</button>
         </div>
         <div className='grid-container mt-4'>
         {moviearr.map((movie)=><Moviebox id={movie.id} img={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} title={movie.title}></Moviebox>)}

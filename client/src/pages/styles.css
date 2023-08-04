@@ -192,11 +192,17 @@ h3{
     border: solid;
     padding: 1em;
     border-radius: 3%;
+    
+    
 }
+
 .movielist span{
     font-family: 'Zen Kurenaido', sans-serif;
     font-size: large;
     margin-bottom: 2%;
+}
+.movielist:hover{
+    border-color: aquamarine;
 }
 #alllists{
     
