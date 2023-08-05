@@ -14,27 +14,17 @@ export default function Newlist(){
   const [movieIds,setMovieIds]=useState([]);
   const [movies, setMovies] = useState([]);
   const[saveDisabled,setDisabled]=useState(true);
-   
+  
     function saveToDb(e){
       e.preventDefault();
-    console.log(movieIds);
-      if(movieIds.length!=0){
-        
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/list/edit`, {
+      console.log(listname)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/list/${listname}`, {
           method: "PUT",
-          crossDomain: true,
           credentials: 'include',
           headers: {
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "Access-Control-Allow-Origin": "*",
           },
-          body: JSON.stringify({
-            movies:movieIds,
-            description:description,
-            name:name,
-            tag:tag
-          }),
         })
           .then((res) => res.json())
           .then((data) => {
@@ -67,12 +57,25 @@ export default function Newlist(){
               
             }
           });
-      }
+      
       setDisabled(true);
     }
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
       };
+
+    const enableSave=()=>{
+      setDisabled(false);
+      const nameInput=document.querySelector("#listName");
+      
+      const textInput=document.querySelector("textarea")
+    
+      if(nameInput.value===name && textInput.value===description ){
+        setDisabled(true)
+      }
+      
+      
+    }
     const addComponent = (movie) => {
         // Create a new component instance and add it to the components array
         const newComponent = <Moviebox title={movie.title} img={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} id={movie.id}/>;
@@ -120,8 +123,33 @@ export default function Newlist(){
         
                       })
                       const data = await response.json();
-                      console.log(data[0].movies);
+                      console.log(data[0]);
+
+                const nameInput=document.querySelector("#listName");
+                setName(data[0].name)
+                setDescription(data[0].description)
+                setTag(data[0].tags)
+                nameInput.value=data[0].name
+                const tagInput=document.querySelector("#listTag")
+                data[0].tags?tagInput.value=data[0].tags:tagInput.value="Add Tags!"
+                
+                const textInput=document.querySelector("textarea")
+                textInput.value=data[0].description
+                
                 //add all the movies to the component (working here)
+                const moviePromises=data[0].movies.map(async(id)=>{
+                  
+                    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`);
+                    let movie = await response.json();
+                    return <Moviebox title={movie.title} img={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} id={movie.id}/>;
+                })
+                const newComponents = await Promise.all(moviePromises);
+               setComponents((prevComponents) => [...prevComponents, ...newComponents]);
+              
+           
+
+
+                
                
                 } catch (error) {
                     console.log("fetchlist not working")
@@ -146,18 +174,20 @@ export default function Newlist(){
     <input type="name" 
      className="form-control"
      placeholder="Name"
-     onChange={(e) => setName(e.target.value)}
+     id="listName"
+     onChange={enableSave}
      style={{marginBottom:"10%",marginTop:"2%"}}/>
 
 
     <input type="name" 
+    id="listTag"
      className="form-control"
      placeholder="Tags(eg.Top50)"
-     onChange={(e) => setTag(e.target.value)}/>
+     onChange={enableSave}/>
 {/*  */}
 </div>
 <div style={{display:"flex",alignItems:"center",flexDirection:"column"}}>
-<textarea spellcheck="false" style={{height:"150px", width:"400px",marginLeft:"30%",marginRight:'18%'}}onChange={(e) => setDescription(e.target.value)}/>
+<textarea spellcheck="false" style={{height:"150px", width:"400px",marginLeft:"30%",marginRight:'18%'}}onChange={enableSave}/>
 {!saveDisabled?(<button className='btn btn-success'  style={{marginTop:"4%",marginLeft:"96%"}}>Save</button>):
 <button className="btn btn-success disabled"style={{marginTop:"4%",marginLeft:"96%"}} >Save</button>
 }

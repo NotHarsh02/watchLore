@@ -33,6 +33,21 @@ router.post("/add",async(req,res)=>{
    
 
 })
+
+router.put("/:name", (req,res)=>{
+  try {
+    const {name}=req.params;
+  console.log("sent put")
+  console.log(name)
+  res.send("done")
+  } catch (error) {
+    
+  }
+  
+})
+
+
+
 router.get("/getLists",async(req,res)=>{
   try {
     const listObject = await List.find().populate('user', 'username');
