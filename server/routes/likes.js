@@ -22,7 +22,7 @@ router.post("/add",async(req,res)=>{
   router.post("/check",async (req,res)=>{
     try {
       // res.send(req.user._id)
-      if(!req.isAuthenticated()){
+      if(!req.isAuthenticated){
         return res.status(401).json({ error: "Unauthorized" });
       }
       const userId = req.user._id;
@@ -42,7 +42,7 @@ router.post("/add",async(req,res)=>{
   })
   router.get("/getdata",async (req,res)=>{
     try {
-      if(!req.isAuthenticated()){
+      if(!req.isAuthenticated){
         return res.status(401).json({ error: "Unauthorized" });
       }
       const userId = req.user._id;
