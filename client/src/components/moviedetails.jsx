@@ -108,13 +108,21 @@ const addToWatchLater =()=>{
   })
     .then((res) => res.json())
     .then((data) => {
-      
+     
       if (data.status == "ok") {
        
        setWatchLater(true)
       
       } else {
-        
+        const promptElement = document.createElement('div');
+        promptElement.textContent = 'Register or Sign In first!';
+        promptElement.classList.add('popup'); 
+       
+        document.body.appendChild(promptElement);
+ 
+        setTimeout(() => {
+          promptElement.remove();
+        }, 3000);
       }
       
     });
@@ -138,13 +146,22 @@ const addToLikes =()=>{
   })
     .then((res) => res.json())
     .then((data) => {
-      
+      console.log(data);
       if (data.status == "ok") {
-       
+        
        setLike(true)
       
       } else {
-        
+        const promptElement = document.createElement('div');
+        promptElement.textContent = 'Register or Sign In first!';
+        promptElement.classList.add('popup'); 
+       
+        document.body.appendChild(promptElement);
+ 
+        setTimeout(() => {
+          promptElement.remove();
+        }, 3000);
+       
       }
       
     });
@@ -172,7 +189,7 @@ const checkWatchLater=()=>{
        setWatchLater(true);
        
       } else {
-        
+       
       }
       
     });
@@ -230,7 +247,15 @@ const addtodiary=()=>{
         window.location.reload()
         
       } else {
-        console.log("problem")
+        const promptElement = document.createElement('div');
+        promptElement.textContent = 'Register or Sign In first!';
+        promptElement.classList.add('popup'); 
+       
+        document.body.appendChild(promptElement);
+ 
+        setTimeout(() => {
+          promptElement.remove();
+        }, 3000);
         
       }
     });
@@ -307,7 +332,7 @@ const deleteMovie=async()=>{
       }
       else{
         
-   console.log("like deletion");
+        
       }
       
 }

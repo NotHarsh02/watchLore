@@ -7,8 +7,18 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
   /* background-image: url("../assets/background.jpg"); */
   background-color: rgb(38, 40, 43)
+
+  /* App.css */
+
+
+}
+
+::selection {
+  background: transparent; /* Set the background color to transparent */
+  color: inherit; /* Inherit the color from the parent element */
 }
 
 code {

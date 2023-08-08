@@ -319,6 +319,33 @@ text-align: center;
   margin-left: 20%;
 }
 
+/* Popup.css */
+@keyframes fadeOutRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(70%);
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 60px;
+  left: 150px;
+  padding: 10px;
+  border-radius: 3%;
+  background-color: red;
+  color: white;
+  z-index: 9999;
+  width: 20%;
+  text-align: center;
+  animation: fadeOutRight 3s ease; /* Apply the animation to the "popup" class. */
+}
+
+
 @media (max-width: 1000px) {
   .swiper-slide img {
     display: block;

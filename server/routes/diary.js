@@ -11,7 +11,7 @@ router.post("/add",async(req,res)=>{
           const userId = req.user._id;    
           const {movieId,date} =req.body;
           const search = await Diary.findOne({ date: date ,user:userId});
-          console.log(search)
+          
           if(search){
             const result =await Diary.findByIdAndUpdate(search._id,{ $addToSet: { movies: movieId } });
             

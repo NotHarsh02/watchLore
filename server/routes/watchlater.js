@@ -3,7 +3,7 @@ const router=express.Router();
 const User = require("../models/user");
 router.post("/add",async(req,res)=>{
     try {
-      if(!req.isAuthenticated()){
+      if(!req.isAuthenticated){
         res.status({"status":"nologin"})
       }
       
@@ -14,8 +14,7 @@ router.post("/add",async(req,res)=>{
       const final= await  User.findByIdAndUpdate(userId, { $addToSet: { watchLater: movieId } })
       res.send({status:"ok"})
     } catch (e) {
-      console.log(e.message)
-      // res.send(e.message);
+      res.send({status:"error"})
     }
     
     })
