@@ -1,6 +1,6 @@
 import React, { useState,useEffect} from 'react'
 import Nav from '../UI/navbar'
-import Moviebox from "./movieBox"
+import MovieList from '../pages/MovieList';
 import "./styles.css"
 import { Swiper, SwiperSlide } from "swiper/react";
 import Start from "./getStarted"
@@ -101,7 +101,10 @@ const isLogIn = async () => {
       setLoading(false);
     }
  }
-
+ const listMake = () => {
+  // Change the URL
+  window.location.href = '/lists';
+};
 
 // if no watchlist no recomendation fetch from backend
  
@@ -137,7 +140,6 @@ return(<>
 )}
 
 
-
 {(!isLoggedIn)&&(<>
 <div className='fullscreen'>
 
@@ -145,12 +147,23 @@ return(<>
 
 </div>
 <Carousel ></Carousel> 
+
 </>
 )
 }
 
 {(isLoggedIn)&&(<><Carousel allrec={true} ></Carousel><a id="seemore" href={`/profile/${data}`} >Check Profile</a></> )}
+
 {isLoggedIn&&(<Carousel  ></Carousel> )}
+
+<div style={{display:"flex",flexDirection:"row",marginTop:"5%",marginRight:"5%",justifyContent:"space-evenly"}}>
+  <div style={{display:"flex",flexDirection:"column",alignContent:"space-between"}}><h1 id="makeListHome">Watch more,see more make or explore lists now:</h1>
+  <button className='btn btn-success' style={{marginRight:"20%",marginLeft:"20%"}} onClick={listMake}>Make lists now!</button>
+  </div>
+  
+  <img style={{width:"20%",height:"40%"}}src="https://media1.tenor.com/m/4FVPGc4HuVEAAAAC/pop-corn-movie.gif" alt="" />
+  </div>
+
 {isLoggedIn&&(<Carousel highrated={true} ></Carousel> )}
 
 

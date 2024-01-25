@@ -217,6 +217,12 @@ text-align: center;
   margin-left: 8%;
   margin-top: 5%;
 }
+#makeListHome{
+  font-family: 'Macondo', cursive;
+  font-family: 'Zen Kurenaido', sans-serif;
+  font-size:xx-large;
+  margin-bottom: 15%;
+}
 #recvala{
   margin-top: 1.5%;
 }
