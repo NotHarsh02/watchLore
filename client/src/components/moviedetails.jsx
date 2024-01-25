@@ -311,7 +311,7 @@ const toggletrailer=()=>{
   }
   
 }
-const deleteMovie=async()=>{
+const deleteLikedMovie=async()=>{
   
       const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/likes/${movieId}`,{
           method: "DELETE",
@@ -430,7 +430,7 @@ useEffect(() => {
       {/* like icon */}
       <div>
       {isLiked ? (
-     <div onClick={deleteMovie} style={{ marginLeft: "14%",cursor:"pointer" }}><HeartFill color="red" size={40}></HeartFill></div>) : (
+     <div onClick={deleteLikedMovie} style={{ marginLeft: "14%",cursor:"pointer" }}><HeartFill color="red" size={40}></HeartFill></div>) : (
   <div style={{ marginLeft: "14%", cursor: "pointer" }} onClick={addToLikes}><Heart size={40} color="red"></Heart></div>)}
   <span style={{marginLeft:"30%"}}>Like</span>
 </div>

@@ -76,4 +76,20 @@ router.post("/getList",async(req,res)=>{
   }
 })
 
+router.delete("/:name",async (req,res)=>{
+  const {name} =req.params;
+  
+  try {
+   let bla=await List.findOneAndDelete({name:name})
+   
+   console.log(bla)
+   
+   res.send({status:"ok"})
+   
+  } catch (error) {
+   console.log(error.message);
+  }
+ 
+ })
+
 module.exports=router;

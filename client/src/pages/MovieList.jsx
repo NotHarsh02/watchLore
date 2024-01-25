@@ -1,13 +1,13 @@
 import React, { Component,useEffect,useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 import Nav from "../UI/navbar"
-import { PencilFill } from 'react-bootstrap-icons';
+import { PencilFill ,FileXFill} from 'react-bootstrap-icons';
 import "./styles.css"
 import Moviebox from '../components/movieBox';
 export default function MovieList(){
     const navigate = useNavigate();
     const[username,setUserName] =useState([]);
-    const [listName,setListName]=useState([]);
+    let [listName,setListName]=useState([]);
     const [listMovies,setListMovies]=useState([]);
     const getMovieList = async () => {
       try {
@@ -63,12 +63,45 @@ user.push(id.user.username);
     let listlink =`/lists/${listName[index]}/edit`;
       navigate(listlink)
    }
+
+
+   const deleteMovieFromList=async(index,e)=>{
+     e.stopPropagation();
+     console.log(listMovies)
+     
+    const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/list/${listName[index]}`,{
+        method: "DELETE",
+        crossDomain: true,
+        credentials: 'include',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "Access-Control-Allow-Origin": "*",   
+        }
+    })
+    
+    if(response.status===200){
+      
+       setListMovies(listMovies.slice(0, index).concat(listMovies.slice(index + 1)))
+        console.log("ok")
+    }
+    else{
+      
+      console.log("problem")
+    }
+    
+}
+
+
+
     const gotoListPage=(index)=>{
       let listlink =`/lists/${listName[index]}`;
       navigate(listlink)
       // window.location.reload();
       
     }
+
+  
    
     useEffect(()=>{
  getMovieList();
@@ -91,9 +124,12 @@ user.push(id.user.username);
 <div id="alllists">
           {listMovies.map((list, index) => (
   <div key={index} className='movielist'onClick={()=>gotoListPage(index)}>
-    <div className='d-flex'>
-    <span style={{marginRight:"50%"}}>{listName[index]}</span>
-    <PencilFill size={20} onClick={(e)=>editList(index,e)} />
+    <div className=' listIconTitle' >
+    <span >{listName[index]}</span>
+    <div style={{display:"flex"}}>
+      <span className="deleteIcon" onClick={(e)=>deleteMovieFromList(index,e)}><FileXFill size={20} ></FileXFill></span>
+    <span className='editIcon'><PencilFill  size={20} onClick={(e)=>editList(index,e)} /></span>
+    </div>
     </div>
    
    <span>{username[index].charAt(0).toUpperCase() + username[index].slice(1)}</span>

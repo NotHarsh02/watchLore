@@ -185,13 +185,16 @@ h3{
 }
 .moviesoflist{
     display:flex;
+    
 }
 .movielist{
     margin-bottom: 5%;
-    margin-left: 3%;
+    margin-left: 2%;
     border: solid;
     padding: 1em;
     border-radius: 3%;
+    margin-right: 2%;
+    
     
     
 }
@@ -209,7 +212,24 @@ h3{
     display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
-    margin-top: 5%;
+  translate: 0% -10%;
+    transform: scale(0.7);
+}
+.listIconTitle{
+    display: flex;
+    justify-content: space-between;
+    
+}
+/* .deleteIcon:hover{
+    transform: scale(1.4);
+} */
+.editIcon{
+    align-content: flex-end;
+    margin-left: 8%;
+}
+.editIcon:hover ,.deleteIcon:hover{
+  transform: scale(1.4);
+  
 }
 
 @media (max-width: 1000px){

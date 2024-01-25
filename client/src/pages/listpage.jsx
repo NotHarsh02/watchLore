@@ -37,19 +37,43 @@ export default function Listpage(){
        }))
        
        setmoviearr(movieinfo);
-       
+      
         } catch (error) {
             console.log("fetchlist not working")
         }
     }
 
-    const goToEditPage=(name)=>{
-        let listlink =`/lists/${name}/edit`;
+    const goToEditPage=()=>{
+        let listlink =`/lists/${listname}/edit`;
         navigate(listlink)
 
     }
   
+    const deleteMovieFromList=async()=>{
         
+       const response= await fetch(`${process.env.REACT_APP_BACKEND_URL}/list/${listname}`,{
+           method: "DELETE",
+           crossDomain: true,
+           credentials: 'include',
+           headers: {
+             "Content-Type": "application/json",
+             "Accept": "application/json",
+             "Access-Control-Allow-Origin": "*",   
+           }
+       })
+       
+       if(response.status===200){
+         
+        let listlink =`/lists`;
+        navigate(listlink)
+           console.log("ok")
+       }
+       else{
+         
+         console.log("problem")
+       }
+       
+   }  
 
     
     useEffect(()=>{
@@ -64,7 +88,10 @@ export default function Listpage(){
         <h3 style={{display:"block",marginLeft:"0%"}}>{listname} </h3>
        
         {<p>{description}</p>}
-        <button className="btn btn-danger" onClick={()=>goToEditPage(listname)}>Edit</button>
+        <div style={{display:"flex",justifyContent:"left"}}>
+        <button className="btn btn-success" onClick={goToEditPage}>Edit</button>
+        <button style={{marginLeft:"2%"}}className="btn btn-danger" onClick={deleteMovieFromList}>Delete</button>
+        </div>
         </div>
         <div className='grid-container mt-4'>
         {moviearr.map((movie)=><Moviebox id={movie.id} img={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} title={movie.title}></Moviebox>)}
