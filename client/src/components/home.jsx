@@ -8,7 +8,6 @@ import Loading from "../UI/loading"
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import "./styles.css";
 import Carousel from '../UI/carousel';
 import { Pagination } from "swiper";
 import { movieActions } from '../store/movies';
@@ -134,7 +133,7 @@ if (isLoading) {
 return(<>
 <Nav></Nav>
 {isLoggedIn&&(
-  !newUser?((isLoggedIn)&&(<h1 id="welcomeMessage">{`Welcome back,${data}.\nHere's what we recommend for you:`}</h1>)):
+  !newUser?((isLoggedIn)&&(<h1 id="welcomeMessage">Welcome back,<a id="nameTag" href={`/profile/${data}`}>{data}</a>. Here's what we recommend for you:</h1>)):
   (<h1 id="welcomeMessage">{`Welcome to  Watchlore.TM,${data}`} </h1>)
 
 )}
