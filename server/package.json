@@ -27,6 +27,7 @@
     "passport-local-mongoose": "^8.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11"
   }
 }

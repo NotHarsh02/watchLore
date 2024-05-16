@@ -158,8 +158,8 @@ return(<>
 {isLoggedIn&&(<Carousel  ></Carousel> )}
 
 <div style={{display:"flex",flexDirection:"row",marginTop:"5%",marginRight:"5%",justifyContent:"space-evenly"}}>
-  <div style={{display:"flex",flexDirection:"column",alignContent:"space-between"}}><h1 id="makeListHome">Watch more,see more make or explore lists now:</h1>
-  <button className='btn btn-success' style={{marginRight:"20%",marginLeft:"20%"}} onClick={listMake}>Make lists now!</button>
+  <div style={{display:"flex",flexDirection:"column",alignContent:"space-between"}}><h1 id="makeListHome">Watch more,see more make or explore lists now!</h1>
+  <button className='btn btn-success' style={{marginRight:"20%",marginLeft:"20%"}} onClick={listMake}>Make lists now</button>
   </div>
   
   <img style={{width:"20%",height:"40%"}}src="https://media1.tenor.com/m/4FVPGc4HuVEAAAAC/pop-corn-movie.gif" alt="" />
