@@ -39,17 +39,19 @@ export default function Home(props){
         }
       
     } catch (error) {
-      
+      console.log("cannot fetch user reccomendation array")
     }
    }
 const nowRunning =async()=>{
-   const response =await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}`)
-      if (!response.ok) {
-         throw new Error("Network response was not ok");
-       }
+  try {
+    const response =await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}`)
        const temp = await response.json();
        dispatch(movieActions.fetchMovies(temp.results));
        setPopular(temp.results);
+  } catch (error) {
+    console.log("cannot fecth trending movies of the week")
+  }
+   
       
 }
 const userInfo =async()=>{
@@ -95,7 +97,7 @@ const isLogIn = async () => {
        setLoggedIn(true)
      }
    } catch (error) {
-     console.error(error);
+     console.log("unable to login due to some issue")
    } finally {
       setLoading(false);
     }

@@ -26,9 +26,10 @@ export default function Carousel(props){
   const toprated =async()=>{
    const response =await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}`)
       if (!response.ok) {
-         throw new Error("Network response was not ok");
+         console.log("cannot fetch top rated data")
        }
        const temp = await response.json();
+       console.log(temp)
        setTopRated(temp.results);
 }
 
@@ -50,28 +51,33 @@ const data= await response.json()
 let finalwala=[]
 await Promise.all(data.likes.map(async(id)=>
 { 
- 
-  let res= await fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`)
-let temp = await res.json()
-if(data.likes.length>4){
-  //get some recomendattions from each movie in likes array
-temp.results.slice(0,6).map((result)=>{
-
-  if(!data.likes.includes(result.id)){
-    finalwala.push(result)
-  }
-
-})
-}
-else{
-  temp.results.map((result)=>{
-
-    if(!data.likes.includes(result.id)){
-      finalwala.push(result)
+  try {
+    let res= await fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`)
+    let temp = await res.json()
+    if(data.likes.length>4){
+      //get some recomendattions from each movie in likes array
+    temp.results.slice(0,6).map((result)=>{
+    
+      if(!data.likes.includes(result.id)){
+        finalwala.push(result)
+      }
+    
+    })
     }
-  
-  })
-}
+    else{
+      temp.results.map((result)=>{
+    
+        if(!data.likes.includes(result.id)){
+          finalwala.push(result)
+        }
+      
+      })
+    }
+  } catch (error) {
+    console.log("some problem with rec")
+  }
+ 
+ 
 }))
 const updatedfinal=Recarrayafterop(finalwala)
 
@@ -91,7 +97,7 @@ setRec(updatedfinal)
 // console.log(updatedfinal)
 
   } catch (e) {
-      console.log(e.message);
+      console.log("cannot fetch reccomendations");
   }
 
 }
