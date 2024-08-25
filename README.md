@@ -1,12 +1,14 @@
 # WatchLore.TM
 
-A Full Stack Web application using ReactJS,NodeJS and MongoDB for those who love movies,deployed on Vercel.
+A Full Stack Web application using ReactJS,NodeJS and MongoDB for those who love movies,deployed on Vercel.<br/>
+Link: https://watch-lore.vercel.app/<br/>
+(Note:TMDB Api used in the project doesnt work with any jio network because of unnecessary blocking of TMDB by Reliance)
 
 ![Homepage](https://github.com/user-attachments/assets/8e6d85cf-11b7-4324-8704-d62998af656d)
 
 
 
-## Find popular movies you like<br/>
+1.Find popular movies you like<br/>
 ![popularMovies](https://github.com/user-attachments/assets/b9d350c1-69da-4333-90a8-6738d5a3c0c9)
 
 2.Get indepth information about any movie,made with ❤️ with a beautiful UI.<br/>
