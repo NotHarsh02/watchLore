@@ -2,7 +2,7 @@
 
 A Full Stack Web application using ReactJS,NodeJS and MongoDB,deployed on Vercel for those who love movies.
 
-![homePage](https://github.com/NotHarsh02/watchLore/tree/main/demoImages/HomePage.png?raw=true).
+![homePage](https://github.com/NotHarsh02/watchLore/tree/main/demoImages/homePage.png?raw=true).
 
 Features-
 1.Find popular movies you like.
