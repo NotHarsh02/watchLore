@@ -1,7 +1,7 @@
 # WatchLore.TM
 
 A Full Stack Web application using ReactJS,NodeJS and MongoDB for those who love movies,deployed on Vercel.<br/>
-Link: https://watch-lore.vercel.app/<br/>
+https://watch-lore.vercel.app/<br/>
 
 ![Homepage](https://github.com/user-attachments/assets/8e6d85cf-11b7-4324-8704-d62998af656d)
 
